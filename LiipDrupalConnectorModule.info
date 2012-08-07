@@ -1,0 +1,4 @@
+name = LiipDrupalConnectorModule
+description = "An abstraction layer between the procedural world of Drupal and OOP."
+package = LiipDrupalModules
+core = 6.x
