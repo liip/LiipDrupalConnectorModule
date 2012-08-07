@@ -1,4 +1,14 @@
 <?php
+/**
+ * Abstraction of the procedural Drupal world into OOP.
+ *
+ * @author     Bastian Feder <drupal@bastian-feder.de>
+ * @author     Daniel Barsotti <daniel.barsotti@liip.ch>
+ * @author     The Migipedia Team Members
+ * @license    http://www.opensource.org/licenses/mit-license.php The MIT License
+ * @copyright  Copyright (c) 2012 liip ag
+ */
+
 
 namespace Liip\Drupal\Modules;
 

@@ -3,7 +3,7 @@
  * This module file is required by Drupal to act as entry point to the current module.
  *
  * @author     Bastian Feder <drupal@bastian-feder.de>
- * @license    http://www.apache.org/licenses/LICENSE-2.0  Apache License, Version 2.0 
+ * @license    http://www.opensource.org/licenses/mit-license.php The MIT License
  * @copyright  Copyright (c) 2012 liip ag
  */
 
