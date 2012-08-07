@@ -1,6 +1,6 @@
 <?php
 
-namespace Liip\DrupalConnectorModule;
+namespace Liip\Drupal\Modules;
 
 /**
  * This class was originally written by the Migipedia team at Liip.
