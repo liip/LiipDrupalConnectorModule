@@ -2,7 +2,7 @@
 
 **ATTENTION**: 
 This repository is currently under heavy development and seen as pre-alpha. Do not expect things 
-to stay like they are now nor that we care about BC breks until we have a state we are satisfied 
+to stay like they are now nor that we care about BC breaks until we have a state we are satisfied 
 with.
 
 
@@ -11,7 +11,7 @@ Doing quite a number of Drupal projects we found out that for our developers the
 of Drupal is always an obstacle. Furthermore as they are used to at least unit test their code, 
 they always complaint about the tight coupling and 'invisible' dependencies you have to agree on 
 when using the Drupal functions, we had to come up with some kind on an abstraction layer to 
-instantiate a dedicated border between our and the Drupal world - the LiipDrupalConnectorModule was
+instantiate a dedicated border between our and the Drupal world - the _LiipDrupalConnectorModule_ was
 born.
 
 ##Obtain sources
@@ -21,9 +21,12 @@ Sure there is a composer configuration file, but this module is not registered i
 at the moment. Since the current state is really not usable, I prefer the module not to be 
 registered yet. I will take care of this when the time is ready, I promise.
 
- `curl -s http://getcomposer.org/installer | php`
- `php composer.phar install`
+To obtain the sources via composer, execute the following commands on the command line:
 
+```bash
+$> curl -s http://getcomposer.org/installer | php
+$> php composer.phar install
+```
 
 ### Get it from github
 Please do not fork it unless you have the ability to maintain private repositories in your account. 
@@ -31,7 +34,7 @@ If not you probably will expose this repository before it is intended to be. If 
 participate in the development of this module, please set PRs on branches. In this way we are still 
 able to maintain a clean master.
 
- - Fork it
- - Clone it 
+ - Fork
+ - Clone 
  - enjoy
 
