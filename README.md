@@ -1,9 +1,9 @@
 #LiipDrupalConnectorModule
 
-**ATTENTION**: 
-This repository is currently under heavy development and seen as pre-alpha. Do not expect things 
-to stay like they are now nor that we care about BC breaks until we have a state we are satisfied 
-with.
+    **ATTENTION**: 
+    This repository is currently under heavy development and seen as pre-alpha. Do not expect 
+    things to stay like they are now nor that we care about BC breaks until we have a state we
+    are satisfied with.
 
 
 ##Purpose
@@ -18,10 +18,11 @@ born.
 
 ### Get it from packagist.org
 
-**NOTE:**
-Sure there is a composer configuration file, but this module is not registered in packagist.org 
-at the moment. Since the current state is really not usable, I prefer the module not to be 
-registered yet. I will take care of this when the time is ready, I promise.
+    **NOTE:**
+    Sure there is a composer configuration file, but this module is not registered in 
+    packagist.org at the moment. Since the current state is really not usable, I prefer
+    the module not to be registered yet. I will take care of this when the time is ready, 
+    I promise.
 
 To obtain the sources via composer, execute the following commands on the command line:
 
@@ -32,11 +33,11 @@ $> php composer.phar install
 
 ### Get it from github
 
-**NOTE:**
-Please do not fork it unless you have the ability to maintain private repositories in your account. 
-If not you probably will expose this repository before it is intended to be. If you want to 
-participate in the development of this module, please set PRs on branches. In this way we are still 
-able to maintain a clean master.
+    **NOTE:**
+    Please do not fork it unless you have the ability to maintain private repositories in your
+    account. If not you probably will expose this repository before it is intended to be. If you
+    want to participate in the development of this module, please set PRs on branches. In this way
+    we are still able to maintain a clean master.
 
  - Fork
  - Clone 
