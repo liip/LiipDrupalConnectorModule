@@ -17,10 +17,11 @@
             "Liip\\Drupal\\Modules\\DrupalConnector": "src/"
         }
     },
+    "minimum-stability": "dev",
     "repositories": [
         {
             "type": "vcs",
-            "url": "git@github.com:lapistano/installers.git"
+            "url": "git://github.com/lapistano/installers.git"
         }
     ],
     "require": {
