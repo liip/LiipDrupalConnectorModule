@@ -12,6 +12,11 @@
             "email": "daniel.barsotti@liip.ch"
         }
     ],
+    "autoload": {
+        "psr-0": {
+            'Liip\\Drupal\\Modules\\DrupalConnector": "src/"
+        }
+    },
     "repositories": [
         {
             "type": "vcs",
@@ -19,6 +24,9 @@
         }
     ],
     "require": {
+       "composer/installers": "dev-DrupalDefaultDirectoryFix as 1.0.0"
+    },
+    "require-dev": {
        "composer/installers": "dev-DrupalDefaultDirectoryFix as 1.0.0"
     }
 }
