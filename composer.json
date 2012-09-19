@@ -5,14 +5,20 @@
     "authors": [
         {
             "name": "Bastian Feder",
-            "email": "github@bastian-feder.de"
+            "email": "bastian.feder@liip.ch"
         },
         {
             "name": "Daniel Barsotti",
             "email": "daniel.barsotti@liip.ch"
         }
     ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "git@github.com:lapistano/installers.git"
+        }
+    ],
     "require": {
-       "composer/installers": "*" 
+       "composer/installers": "DrupalDefaultDirectoryFix as 1.0.0"
     }
 }
