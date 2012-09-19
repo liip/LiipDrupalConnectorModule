@@ -10,7 +10,7 @@
  */
 
 
-namespace Liip\Drupal\Modules;
+namespace Liip\Drupal\Modules\DrupalConnector;
 
 /**
  * This class was originally written by the Migipedia team at Liip.
