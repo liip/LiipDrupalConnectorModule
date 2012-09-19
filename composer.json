@@ -19,6 +19,6 @@
         }
     ],
     "require": {
-       "composer/installers": "DrupalDefaultDirectoryFix as 1.0.0"
+       "composer/installers": "dev-DrupalDefaultDirectoryFix as 1.0.0"
     }
 }
