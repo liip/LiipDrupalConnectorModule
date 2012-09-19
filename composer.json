@@ -1,6 +1,7 @@
 {
     "name": "Liip/DrupalConnectorModule",
     "description": "The DrupalConnector Module is an abstraction layer to the Drupal (6/7) API of global functions in order to use them in a OOD setup.",
+    "type": "drupal-module",
     "authors": [
         {
             "name": "Bastian Feder",
@@ -12,6 +13,6 @@
         }
     ],
     "require": {
-
+       "composer/installers": "*" 
     }
 }
