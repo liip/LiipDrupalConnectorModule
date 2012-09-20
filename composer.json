@@ -17,7 +17,7 @@
     
     "autoload": {
         "psr-0": {
-            "Liip\\Drupal\\Modules\\DrupalConnector": "src/"
+            "Liip\\Drupal\\Modules\\DrupalConnectorModule": "src/"
         }
     },
     

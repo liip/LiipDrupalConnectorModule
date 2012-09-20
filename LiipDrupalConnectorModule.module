@@ -6,17 +6,3 @@
  * @license    http://www.opensource.org/licenses/mit-license.php The MIT License
  * @copyright  Copyright (c) 2012 liip ag
  */
-
-/**
- * The init hook will be called while bootstrapping Drupal.
- *
- * Since this is called in the very early stage of Drupal only basic setup actions, like
- * the requirement of file not covered by an autoloader, located in the include path, or
- * which would not be found by Drupal automatically, shall be performed at this stage.
- *
- */
-function LiipaDrupalConnectorModule_init()
-{
-   require __DIR__ .'/src/Liip/Drupal/Connector.php 
-}
-
