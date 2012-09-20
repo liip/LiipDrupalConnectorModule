@@ -1,4 +1,4 @@
-name = LiipDrupalConnectorModule
-description = "An abstraction layer between the procedural world of Drupal and OOP."
-package = LiipDrupalModules
+name = Liip Drupal Connector Module
+description = An abstraction layer between the procedural world of Drupal and OOP.
+package = Liip Drupal Modules
 core = 6.x
