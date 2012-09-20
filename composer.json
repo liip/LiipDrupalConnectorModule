@@ -2,6 +2,8 @@
     "name": "Liip/DrupalConnectorModule",
     "description": "The DrupalConnector Module is an abstraction layer to the Drupal (6/7) API of global functions in order to use them in a OOD setup.",
     "type": "drupal-module",
+    "minimum-stability": "dev",
+
     "authors": [
         {
             "name": "Bastian Feder",
@@ -12,22 +14,20 @@
             "email": "daniel.barsotti@liip.ch"
         }
     ],
+    
     "autoload": {
         "psr-0": {
             "Liip\\Drupal\\Modules\\DrupalConnector": "src/"
         }
     },
-    "minimum-stability": "dev",
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "git://github.com/lapistano/installers.git"
-        }
-    ],
+    
+    "repositories": [],
+    
     "require": {
-       "composer/installers": "dev-DrupalDefaultDirectoryFix as 1.0.0"
+       "composer/installers": "v1.0.0"
     },
+    
     "require-dev": {
-       "composer/installers": "dev-DrupalDefaultDirectoryFix as 1.0.0"
+       "composer/installers": "v1.0.0"
     }
 }
