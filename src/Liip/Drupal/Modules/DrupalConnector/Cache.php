@@ -3,7 +3,6 @@
  * Abstraction of the procedural Drupal world into OOP.
  *
  * @author     Bastian Feder <drupal@bastian-feder.de>
- * @author     The Migipedia Team Members
  * @license    http://www.opensource.org/licenses/mit-license.php The MIT License
  * @copyright  Copyright (c) 2012 liip ag
  *
@@ -14,7 +13,7 @@
 namespace Liip\Drupal\Modules\DrupalConnector\Cache;
 
 /**
- * Cumulates the caching fucntions of Drupal 7 in one class.
+ * Cumulates the caching functions of Drupal 7 in one class.
  */
 class Cache
 {
