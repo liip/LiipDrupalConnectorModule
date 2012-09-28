@@ -249,50 +249,6 @@ class DrupalConnector
         return url($path, $options);
     }
 
-    public function user_access($string, $account = NULL, $reset = FALSE) {
-        return user_access($string, $account, $reset);
-    }
-
-    public function user_authenticate($form_values = array()) {
-        return user_authenticate($form_values);
-    }
-
-    public function user_compare_roles(stdClass $user, array $roles) {
-        return array_intersect($user->roles, $roles);
-    }
-
-    public function user_delete($uid) {
-        user_delete($uid);
-    }
-
-    public function user_is_logged_in() {
-        return user_is_logged_in();
-    }
-
-    public function user_load($user_info = array()) {
-        return user_load($user_info);
-    }
-
-    public function user_password($length = 10) {
-        return user_password($length);
-    }
-
-    public function user_role_grant_permissions($rid, array $permissions = array()) {
-        return user_role_grant_permissions($rid, $permissions);
-    }
-
-    public function user_role_delete($role) {
-        return user_role_delete($role);
-    }
-
-    public function user_role_save($role) {
-        return user_role_save($role);
-    }
-
-    public function user_save($account, $array = array(), $category = 'account') {
-        return user_save($account, $array, $category);
-    }
-
     public function variable_get($name, $default) {
         return variable_get($name, $default);
     }
