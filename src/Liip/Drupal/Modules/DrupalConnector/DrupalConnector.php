@@ -7,10 +7,12 @@
  * @author     The Migipedia Team Members
  * @license    http://www.opensource.org/licenses/mit-license.php The MIT License
  * @copyright  Copyright (c) 2012 liip ag
+ *
+ * @package DrupalConnector
  */
 
 
-namespace Liip\Drupal\Modules\DrupalConnectorModule;
+namespace Liip\Drupal\Modules\DrupalConnector;
 
 /**
  * This class was originally written by the Migipedia team at Liip.
@@ -20,7 +22,8 @@ namespace Liip\Drupal\Modules\DrupalConnectorModule;
  *
  * Please order the functions alphabetically!
  */
-class DrupalConnector {
+class DrupalConnector
+{
 
     public function arg($index = NULL, $path = NULL) {
         return arg($index, $path);
@@ -29,14 +32,6 @@ class DrupalConnector {
     public function base_url() {
         global $base_url;
         return $base_url;
-    }
-
-    public function cache_get($key, $table = 'cache') {
-        return cache_get($key, $table);
-    }
-
-    public function cache_set($cid, $data, $table = 'cache', $expire = CACHE_PERMANENT, $headers = NULL)  {
-        return cache_set($cid, $data, $table, $expire, $headers);
     }
 
     public function current_user() {
