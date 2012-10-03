@@ -1,5 +1,5 @@
 {
-    "name": "LiipDrupalConnectorModule",
+    "name": "liipdrupalconnectormodule",
     "description": "The DrupalConnector Module is an abstraction layer to the Drupal (6/7) API of global functions in order to use them in a OOD setup.",
     "type": "drupal-module",
     "minimum-stability": "dev",
