@@ -56,6 +56,16 @@ class Node
     }
 
     /**
+     * Retrieves the timestamp at which the current user last viewed the
+     * specified node.
+     *
+     * @link http://api.drupal.org/api/drupal/modules!node!node.module/function/node_last_viewed/7
+     */
+    function node_last_viewed($nid) {
+        return node_last_viewed($nid);
+    }
+
+    /**
      * Load a node object from the database.
      *
      * @param $nid
@@ -76,6 +86,22 @@ class Node
     }
 
     /**
+     * Decide on the type of marker to be displayed for a given node.
+     *
+     * @param $nid
+     *   Node ID whose history supplies the "last viewed" timestamp.
+     * @param $timestamp
+     *   Time which is compared against node's "last viewed" timestamp.
+     * @return
+     *   One of the MARK constants.
+     *
+     * @link http://api.drupal.org/api/drupal/modules!node!node.module/function/node_mark/7
+     */
+    function node_mark($nid, $timestamp) {
+        return node_mark($nid, $timestamp);
+    }
+
+    /**
      * Save changes to a node or add a new node.
      *
      * @param $node
@@ -86,6 +112,39 @@ class Node
      */
     public function node_save(&$node) {
         return node_save($node);
+    }
+
+    /**
+     * Update the 'last viewed' timestamp of the specified node for current user.
+     *
+     * @param $node
+     *   A node object.
+     *
+     * @link http://api.drupal.org/api/drupal/modules!node!node.module/function/node_tag_new/7
+     */
+    function node_tag_new($node) {
+        node_tag_new($node);
+    }
+
+    /**
+     * Gathers a listing of links to nodes.
+     *
+     * @param $result
+     *   A database result object from a query to fetch node entities. If your
+     *   query joins the {node_comment_statistics} table so that the comment_count
+     *   field is available, a title attribute will be added to show the number of
+     *   comments.
+     * @param $title
+     *   A heading for the resulting list.
+     *
+     * @return
+     *   A renderable array containing a list of linked node titles fetched from
+     *   $result, or FALSE if there are no rows in $result.
+     *
+     * @link http://api.drupal.org/api/drupal/modules!node!node.module/function/node_title_list/7
+     */
+    function node_title_list($result, $title = NULL) {
+        return node_title_list($result, $title);
     }
 
     /**
