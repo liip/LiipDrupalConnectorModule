@@ -39,39 +39,6 @@ class DrupalConnector
         return $user;
     }
 
-    public function db_affected_rows() {
-        return db_affected_rows();
-    }
-
-    public function db_error() {
-        return db_error();
-    }
-
-    public function db_fetch_array($result) {
-        return db_fetch_array($result);
-    }
-
-    public function db_fetch_object($result) {
-        return db_fetch_object($result);
-    }
-
-    public function db_query() {
-        $args = func_get_args();
-        return call_user_func_array('db_query', $args);
-    }
-
-    public function db_result($resource) {
-        return db_result($resource);
-    }
-
-    public function db_rewrite_sql($query, $primary_table = 'n', $primary_field = 'nid', $args = array()) {
-        return db_rewrite_sql($query, $primary_table, $primary_field, $args);
-    }
-
-    public function db_update($table, array $options = array()) {
-        return db_update($table, $options);
-    }
-
     public function drupal_access_denied() {
         drupal_access_denied();
     }
