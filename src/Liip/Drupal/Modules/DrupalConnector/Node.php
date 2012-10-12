@@ -15,6 +15,8 @@ namespace Liip\Drupal\Modules\DrupalConnector;
 
 /**
  * Cumulates the node functions of Drupal 7 in one class.
+ *
+ * Please order the functions alphabetically!
  */
 class Node
 {

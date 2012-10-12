@@ -14,6 +14,8 @@ namespace Liip\Drupal\Modules\DrupalConnector;
 
 /**
  * Cumulates the module functions of Drupal 7 in one class.
+ *
+ * Please order the functions alphabetically!
  */
 class Module
 {
@@ -222,6 +224,6 @@ class Module
      */
     public function module_implements($hook, $sort = false, $reset = false)
     {
-        return module_implements($hook, $sort, $reset)
+        return module_implements($hook, $sort, $reset);
     }
 }
