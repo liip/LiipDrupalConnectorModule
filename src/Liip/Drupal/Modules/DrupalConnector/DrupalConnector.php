@@ -129,10 +129,6 @@ class DrupalConnector
         return ip_address();
     }
 
-    public function l($text, $path, $options = array()) {
-        return l($text, $path, $options);
-    }
-
     public function menu_execute_active_handler($path = NULL) {
         return menu_execute_active_handler($path);
     }
@@ -158,10 +154,6 @@ class DrupalConnector
         return session_id();
     }
 
-    public function t($string, $args = array(), $langcode = NULL) {
-        return t($string, $args, $langcode);
-    }
-
     public function taxonomy_get_term($tid, $reset = FALSE) {
         return taxonomy_get_term($tid, $reset);
     }
@@ -173,17 +165,5 @@ class DrupalConnector
 
     public function theme_pager($tags = array(), $limit = 10, $element = 0, $parameters = array(), $quantity = 9) {
         return theme_pager($tags, $limit, $element, $parameters, $quantity);
-    }
-
-    public function url($path = NULL, $options = array()) {
-        return url($path, $options);
-    }
-
-    public function variable_get($name, $default) {
-        return variable_get($name, $default);
-    }
-
-    public function watchdog($type, $message, $variables = array(), $severity = WATCHDOG_NOTICE, $link = NULL) {
-        return watchdog($type, $message, $variables, $severity, $link);
     }
 }
