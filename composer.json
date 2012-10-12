@@ -4,6 +4,7 @@
     "type": "drupal-module",
     "minimum-stability": "dev",
     "license": "MIT",
+    "keywords": ['Drupal', 'adaptor', 'oop', 'Drupal 7'],
 
     "authors": [
         {
@@ -27,6 +28,8 @@
     "repositories": [],
 
     "require": {
+       "php": ">=5.3,<:q
+        :qqqq5.4",
        "composer/installers": "v1.0.0"
     }
 }
