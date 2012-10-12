@@ -10,7 +10,7 @@
  * @subpackage Cache
  */
 
-namespace Liip\Drupal\Modules\DrupalConnector\Cache;
+namespace Liip\Drupal\Modules\DrupalConnector;
 
 /**
  * Cumulates the caching functions of Drupal 7 in one class.

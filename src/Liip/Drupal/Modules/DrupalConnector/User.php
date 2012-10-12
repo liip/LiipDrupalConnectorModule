@@ -10,7 +10,7 @@
  * @subpackage User
  */
 
-namespace Liip\Drupal\Modules\DrupalConnector\User;
+namespace Liip\Drupal\Modules\DrupalConnector;
 
 /**
  * Cumulates the user functions of Drupal 7 in one class.
