@@ -141,27 +141,6 @@ class DrupalConnector
         return menu_set_active_item($path);
     }
 
-    public function node_access($op, $node, $account = NULL) {
-        return node_access($op, $node, $account);
-    }
-
-    public function node_delete($nid) {
-        return node_delete($nid);
-    }
-
-    public function node_load($param = array(), $revision = NULL, $reset = NULL) {
-        $node = node_load($param, $revision, $reset);
-        return $node;
-    }
-
-    public function node_save(&$node) {
-        return node_save($node);
-    }
-
-    public function node_view($node, $teaser = FALSE, $page = FALSE, $links = TRUE) {
-        return node_view($node, $teaser, $page, $links);
-    }
-
     public function pager_query($query, $limit = 10, $element = 0, $count_query = NULL) {
         $args = func_get_args();
         return call_user_func_array('pager_query', $args);
