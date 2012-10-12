@@ -79,7 +79,6 @@ class Module
         drupal_alter($type, $data, $context1, $context2);
     }
 
-
     /**
      * Disable a given set of modules.
      *
@@ -95,7 +94,6 @@ class Module
     {
         module_disable($module_list, $disable_dependents);
     }
-
 
     /**
      * Enables or installs a given list of modules.
