@@ -82,8 +82,8 @@ class Node
      *
      * @link http://api.drupal.org/api/drupal/modules!node!node.module/function/node_load/7
      */
-    public function node_load($param = array(), $revision = NULL, $reset = NULL) {
-        $node = node_load($param, $revision, $reset);
+    public function node_load($nid = NULL, $vid = NULL, $reset = FALSE) {
+        $node = node_load($nid, $vid, $reset);
         return $node;
     }
 
