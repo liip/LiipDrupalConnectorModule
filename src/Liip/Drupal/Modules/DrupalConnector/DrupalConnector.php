@@ -16,7 +16,7 @@ namespace Liip\Drupal\Modules\DrupalConnector;
 
 /**
  * This class was originally written by the Migipedia team at Liip.
- * 
+ *
  * It simply wraps the Drupal functions into a class to facilitate the mocking
  * of Drupal during testing.
  *
@@ -160,22 +160,6 @@ class DrupalConnector
 
     public function ip_address() {
         return ip_address();
-    }
-
-    public function module_disable($module_list, $disable_dependents = TRUE) {
-        module_disable($module_list, $disable_dependents);
-    }
-
-    public function module_enable($module_list, $enable_dependencies = TRUE) {
-        return module_enable($module_list, $enable_dependencies);
-    }
-
-    public function module_exists($module) {
-        return module_exists($module);
-    }
-
-    public function module_invoke_all($hook) {
-        return module_invoke_all($hook);
     }
 
     public function l($text, $path, $options = array()) {
