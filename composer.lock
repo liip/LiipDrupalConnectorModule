@@ -1,0 +1,79 @@
+{
+    "hash": "c6489fa509365588217d5fbb99192428",
+    "packages": [
+        {
+            "name": "composer/installers",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/composer/installers",
+                "reference": "v1.0.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/composer/installers/zipball/v1.0.0",
+                "reference": "v1.0.0",
+                "shasum": ""
+            },
+            "replace": {
+                "shama/baton": "*"
+            },
+            "require-dev": {
+                "composer/composer": "1.0.*@dev"
+            },
+            "time": "2012-09-07 21:17:33",
+            "type": "composer-installer",
+            "extra": {
+                "class": "Composer\\Installers\\Installer"
+            },
+            "installation-source": "dist",
+            "autoload": {
+                "psr-0": {
+                    "Composer\\Installers\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kyle Robinson Young",
+                    "email": "kyle@dontkry.com",
+                    "homepage": "https://github.com/shama",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A multi-framework Composer library installer",
+            "homepage": "http://composer.github.com/installers/",
+            "keywords": [
+                "symfony",
+                "installer",
+                "zend",
+                "wordpress",
+                "cakephp",
+                "codeigniter",
+                "fuelphp",
+                "drupal",
+                "lithium",
+                "li3",
+                "joomla",
+                "laravel",
+                "phpbb",
+                "ppi",
+                "silverstripe",
+                "kohana",
+                "mako"
+            ]
+        }
+    ],
+    "packages-dev": [
+
+    ],
+    "aliases": [
+
+    ],
+    "minimum-stability": "dev",
+    "stability-flags": [
+
+    ]
+}
