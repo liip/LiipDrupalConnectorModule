@@ -9,7 +9,7 @@
 ##Purpose
 Doing quite a number of Drupal projects we found out that for our developers the procedural nature 
 of Drupal is always an obstacle. Furthermore as they are used to at least unit test their code, 
-they always complaint about the tight coupling and 'invisible' dependencies you have to agree on 
+they always complain about the tight coupling and 'invisible' dependencies you have to agree on 
 when using the Drupal functions, we had to come up with some kind on an abstraction layer to 
 instantiate a dedicated border between our and the Drupal world - the _LiipDrupalConnectorModule_ was
 born.
@@ -36,7 +36,7 @@ $> php composer.phar install
     **NOTE:**
     Please do not fork it unless you have the ability to maintain private repositories in your
     account. If not you probably will expose this repository before it is intended to be. If you
-    want to participate in the development of this module, please set PRs on branches. In this way
+    want to participate in the development of this module, please sent PRs on branches. In this way
     we are still able to maintain a clean master.
 
  - Fork
