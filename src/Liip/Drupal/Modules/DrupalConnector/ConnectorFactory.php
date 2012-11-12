@@ -11,6 +11,8 @@
  * @package DrupalConnector
  */
 
+namespace Liip\Drupal\Modules\DrupalConnector;
+
 /**
  * Factory to get connectors instances. Caches the instances.
  * @author Daniel Barsotti <daniel.barsotti@liip.ch>
@@ -18,43 +20,48 @@
 class ConnectorFactory
 {
     /**
-     * @var \Liip\Drupal\Modules\DrupalConnector\Cache
+     * @var Cache
      */
     protected static $cacheConnector;
 
     /**
-     * @var \Liip\Drupal\Modules\DrupalConnector\Common
+     * @var Common
      */
     protected static $commonConnector;
 
     /**
-     * @var \Liip\Drupal\Modules\DrupalConnector\Database
+     * @var Database
      */
     protected static $databaseConnector;
 
     /**
-     * @var \Liip\Drupal\Modules\DrupalConnector\Module
+     * @var Module
      */
     protected static $moduleConnector;
 
     /**
-     * @var \Liip\Drupal\Modules\DrupalConnector\Node
+     * @var Node
      */
     protected static $nodeConnector;
 
     /**
-     * @var \Liip\Drupal\Modules\DrupalConnector\User
+     * @var User
      */
     protected static $userConnector;
 
     /**
+     * @var Bootstrap
+     */
+    protected static $bootstrapConnector;
+
+    /**
      * @static
-     * @return \Liip\Drupal\Modules\DrupalConnector\Cache
+     * @return Cache
      */
     public static function getCacheConnector()
     {
         if (is_null(self::$cacheConnector)) {
-            self::$cacheConnector = new \Liip\Drupal\Modules\DrupalConnector\Cache();
+            self::$cacheConnector = new Cache();
         }
 
         return self::$cacheConnector;
@@ -62,12 +69,12 @@ class ConnectorFactory
 
     /**
      * @static
-     * @return \Liip\Drupal\Modules\DrupalConnector\Common
+     * @return Common
      */
     public static function getCommonConnector()
     {
         if (is_null(self::$commonConnector)) {
-            self::$commonConnector = new \Liip\Drupal\Modules\DrupalConnector\Common();
+            self::$commonConnector = new Common();
         }
 
         return self::$commonConnector;
@@ -75,12 +82,12 @@ class ConnectorFactory
 
     /**
      * @static
-     * @return \Liip\Drupal\Modules\DrupalConnector\Database
+     * @return Database
      */
     public static function getDatabaseConnector()
     {
         if (is_null(self::$databaseConnector)) {
-            self::$databaseConnector = new \Liip\Drupal\Modules\DrupalConnector\Database();
+            self::$databaseConnector = new Database();
         }
 
         return self::$databaseConnector;
@@ -88,12 +95,12 @@ class ConnectorFactory
 
     /**
      * @static
-     * @return \Liip\Drupal\Modules\DrupalConnector\Module
+     * @return Module
      */
     public static function getModuleConnector()
     {
         if (is_null(self::$moduleConnector)) {
-            self::$moduleConnector = new \Liip\Drupal\Modules\DrupalConnector\Module();
+            self::$moduleConnector = new Module();
         }
 
         return self::$moduleConnector;
@@ -101,12 +108,12 @@ class ConnectorFactory
 
     /**
      * @static
-     * @return \Liip\Drupal\Modules\DrupalConnector\Node
+     * @return Node
      */
     public static function getNodeConnector()
     {
         if (is_null(self::$nodeConnector)) {
-            self::$nodeConnector = new \Liip\Drupal\Modules\DrupalConnector\Node();
+            self::$nodeConnector = new Node();
         }
 
         return self::$nodeConnector;
@@ -114,14 +121,27 @@ class ConnectorFactory
 
     /**
      * @static
-     * @return \Liip\Drupal\Modules\DrupalConnector\User
+     * @return User
      */
     public static function getUserConnector()
     {
         if (is_null(self::$userConnector)) {
-            self::$userConnector = new \Liip\Drupal\Modules\DrupalConnector\User();
+            self::$userConnector = new User();
         }
 
         return self::$userConnector;
+    }
+
+    /**
+     * @static
+     * @return Bootstrap
+     */
+    public static function getBootstrapConnector()
+    {
+        if (is_null(self::$bootstrapConnector)) {
+            self::$bootstrapConnector = new Bootstrap();
+        }
+
+        return self::$bootstrapConnector;
     }
 }

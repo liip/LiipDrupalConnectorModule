@@ -15,6 +15,39 @@ namespace Liip\Drupal\Modules\DrupalConnector;
 class Common
 {
     /**
+     * Formats a date, using a date type or a custom date format string.
+     *
+     * @param $timestamp
+     *   A UNIX timestamp to format.
+     * @param $type
+     *   (optional) The format to use, one of:
+     *   - 'short', 'medium', or 'long' (the corresponding built-in date formats).
+     *   - The name of a date type defined by a module in hook_date_format_types(),
+     *     if it's been assigned a format.
+     *   - The machine name of an administrator-defined date format.
+     *   - 'custom', to use $format.
+     *   Defaults to 'medium'.
+     * @param $format
+     *   (optional) If $type is 'custom', a PHP date format string suitable for
+     *   input to date(). Use a backslash to escape ordinary text, so it does not
+     *   get interpreted as date format characters.
+     * @param $timezone
+     *   (optional) Time zone identifier, as described at
+     *   http://php.net/manual/en/timezones.php Defaults to the time zone used to
+     *   display the page.
+     * @param $langcode
+     *   (optional) Language code to translate to. Defaults to the language used to
+     *   display the page.
+     *
+     * @return
+     *   A translated date string in the requested format.
+     */
+    function format_date($timestamp, $type = 'medium', $format = '', $timezone = NULL, $langcode = NULL)
+    {
+        return format_date($timestamp, $type, $format, $timezone, $langcode);
+    }
+
+    /**
      * Formats an internal or external URL link as an HTML anchor tag.
      *
      * This function correctly handles aliased paths, and adds an 'active' class
