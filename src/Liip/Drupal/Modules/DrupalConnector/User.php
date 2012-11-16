@@ -53,7 +53,7 @@ class User
      *
      * @return array Set of differences
      */
-    public function user_compare_roles(stdClass $user, array $roles)
+    public function user_compare_roles(\stdClass $user, array $roles)
     {
         return array_intersect($user->roles, $roles);
     }
