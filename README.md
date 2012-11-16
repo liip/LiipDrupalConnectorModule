@@ -40,7 +40,7 @@ $> php composer.phar install --dev
     we are still able to maintain a clean master.
 
 If you consider participating and contribute to the connector the best way to start is by forking the repository.
-For further information how to start contributing and how things are done please refer to [[Participate and contribute]].
+For further information how to start contributing and how things are done please refer to [Participate and contribute](https://github.com/liip/LiipDrupalConnectorModule/wiki/Participate-and-contribute).
 
 ## Getting started
 TBD.
