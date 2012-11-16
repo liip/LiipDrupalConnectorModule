@@ -77,7 +77,7 @@ class Node
      * @param integer $vid   The revision ID.
      * @param boolean $reset Whether to reset the node_load_multiple cache.
      *
-     * @return \stdClass A fully-populated node object, or FALSE if the node is not found.
+     * @return \stdClass|false A fully-populated node object, or FALSE if the node is not found.
      *
      * @link http://api.drupal.org/api/drupal/modules!node!node.module/function/node_load/7
      */
