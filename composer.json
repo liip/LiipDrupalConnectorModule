@@ -1,10 +1,10 @@
 {
     "name": "liip/drupalconnectormodule",
-    "description": "The DrupalConnector Module is an abstraction layer to the Drupal 7 API of global functions in order to use them in a OOD setup.",
+    "description": "The DrupalConnector Module is an abstraction layer to the Drupal 7 API of global functions in order to use them in an OOD setup.",
     "type": "drupal-module",
     "minimum-stability": "dev",
     "license": "MIT",
-    "keywords": [ "Drupal", "adaptor", "oop", "Drupal 7"],
+    "keywords": [ "Drupal", "adapter", "oop", "Drupal 7", "ood", "testing", "tdd", "software quality"],
 
     "authors": [
         {
