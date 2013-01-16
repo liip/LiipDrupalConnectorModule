@@ -55,6 +55,11 @@ class ConnectorFactory
     protected static $bootstrapConnector;
 
     /**
+     * @var Filter
+     */
+    protected static $filterConnector;
+
+    /**
      * @static
      * @return Cache
      */
@@ -143,5 +148,18 @@ class ConnectorFactory
         }
 
         return self::$bootstrapConnector;
+    }
+
+    /**
+     * @static
+     * @return Filter
+     */
+    public static function getFilterConnector()
+    {
+        if (is_null(self::$filterConnector)) {
+            self::$filterConnector = new Filter();
+        }
+
+        return self::$filterConnector;
     }
 }
