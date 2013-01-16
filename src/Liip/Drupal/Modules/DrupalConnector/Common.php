@@ -248,7 +248,7 @@ class Common
      *
      * @link http://api.drupal.org/api/drupal/includes!bootstrap.inc/function/variable_set/7
      */
-    public function variable_set()
+    public function variable_set($name, $value)
     {
         return variable_set($name, $value);
     }
