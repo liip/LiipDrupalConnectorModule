@@ -7,19 +7,49 @@
  * @copyright  Copyright (c) 2012 liip ag
  *
  * @package    DrupalConnector
- * @subpackage Module
+ * @subpackage Breadcrumb
  */
 
 namespace Liip\Drupal\Modules\DrupalConnector;
 
 class Bootstrap
 {
+
+    /**
+     * Returns a component of the current Drupal path.
+     *
+     * When viewing a page at the path "admin/structure/types", for example, arg(0)
+     * returns "admin", arg(1) returns "structure", and arg(2) returns "types".
+     *
+     * Avoid use of this function where possible, as resulting code is hard to
+     * read. In menu callback functions, attempt to use named arguments. See the
+     * explanation in menu.inc for how to construct callbacks that take arguments.
+     * When attempting to use this function to load an element from the current
+     * path, e.g. loading the node on a node page, use menu_get_object() instead.
+     *
+     * @param $index
+     *   The index of the component, where each component is separated by a '/'
+     *   (forward-slash), and where the first component has an index of 0 (zero).
+     * @param $path
+     *   A path to break into components. Defaults to the path of the current page.
+     *
+     * @return
+     *   The component specified by $index, or null if the specified component was
+     *   not found. If called without arguments, it returns an array containing all
+     *   the components of the current path.
+     */
+    public function arg($index = null, $path = null)
+    {
+        return arg($index, $path);
+    }
+
     /**
      * Generates a default anonymous $user object.
      *
      * @return Object - the user object.
      */
-    public function drupal_anonymous_user() {
+    public function drupal_anonymous_user()
+    {
         return drupal_anonymous_user();
     }
 
@@ -35,15 +65,38 @@ class Bootstrap
      * @param $phase
      *   A constant. Allowed values are the DRUPAL_BOOTSTRAP_* constants.
      * @param $new_phase
-     *   A boolean, set to FALSE if calling drupal_bootstrap from inside a
+     *   A boolean, set to false if calling drupal_bootstrap from inside a
      *   function called from drupal_bootstrap (recursion).
      *
      * @return
      *   The most recently completed phase.
      */
-    public function drupal_bootstrap($phase = NULL, $new_phase = TRUE)
+    public function drupal_bootstrap($phase = null, $new_phase = true)
     {
         drupal_bootstrap($phase, $new_phase);
+    }
+
+    /**
+     * Sets a message which reflects the status of the performed operation.
+     *
+     * If the function is called with no arguments, this function returns all set
+     * messages without clearing them.
+     *
+     * @param $message
+     *   The message to be displayed to the user. For consistency with other
+     *   messages, it should begin with a capital letter and end with a period.
+     * @param $type
+     *   The type of the message. One of the following values are possible:
+     *   - 'status'
+     *   - 'warning'
+     *   - 'error'
+     * @param $repeat
+     *   If this is false and the message is already set, then the message won't
+     *   be repeated.
+     */
+    public function drupal_set_message($message = null, $type = 'status', $repeat = true)
+    {
+        drupal_set_message($message, $type, $repeat);
     }
 
     /**
@@ -134,7 +187,7 @@ class Bootstrap
      *
      * Example:
      * @code
-     * function user_access($string, $account = NULL) {
+     * function user_access($string, $account = null) {
      *   // Use the advanced drupal_static() pattern, since this is called very often.
      *   static $drupal_static_fast;
      *   if (!isset($drupal_static_fast)) {
@@ -153,7 +206,7 @@ class Bootstrap
      * @param $default_value
      *   Optional default value.
      * @param $reset
-     *   TRUE to reset a specific named variable, or all variables if $name is NULL.
+     *   true to reset a specific named variable, or all variables if $name is null.
      *   Resetting every variable should only be used, for example, for running
      *   unit tests with a clean environment. Should be used only though via
      *   function drupal_static_reset() and the return value should not be used in
@@ -164,7 +217,50 @@ class Bootstrap
      *
      * @see drupal_static_reset()
      */
-    function &drupal_static($name, $default_value = NULL, $reset = FALSE) {
+    public function &drupal_static($name, $default_value = null, $reset = false)
+    {
         return drupal_static($name, $default_value, $reset);
+    }
+
+    /**
+     * Unserializes and appends elements from a serialized string.
+     *
+     * @param $obj
+     *   The object to which the elements are appended.
+     * @param $field
+     *   The attribute of $obj whose value should be unserialized.
+     */
+    public function drupal_unpack($obj, $field = 'data')
+    {
+        drupal_unpack($obj, $field);
+    }
+
+
+    /**
+     * Returns the IP address of the client machine.
+     *
+     * If Drupal is behind a reverse proxy, we use the X-Forwarded-For header
+     * instead of $_SERVER['REMOTE_ADDR'], which would be the IP address of
+     * the proxy server, and not the client's. The actual header name can be
+     * configured by the reverse_proxy_header variable.
+     *
+     * @return
+     *   IP address of client machine, adjusted for reverse proxy and/or cluster
+     *   environments.
+     */
+    public function ip_address()
+    {
+        return ip_address();
+    }
+
+    /**
+     * Rescans all enabled modules and rebuilds the registry.
+     *
+     * Rescans all code in modules or includes directories, storing the location of
+     * each interface or class in the database.
+     */
+    public function registry_rebuild()
+    {
+        registry_rebuild();
     }
 }
