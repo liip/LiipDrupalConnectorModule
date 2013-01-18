@@ -155,7 +155,8 @@ class User
      * TODO: this does not wrap a function of the user module, find out if this function belongs here.
      * @return stdClass
      */
-    public function current_user() {
+    public function current_user()
+    {
         global $user;
         return $user;
     }
