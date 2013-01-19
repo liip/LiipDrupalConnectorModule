@@ -1,15 +1,15 @@
 <?php
 
-    /**
-     * Abstraction of the procedural Drupal world into OOP.
-     *
-     * @author     Daniel Barsotti <daniel.barsotti@liip.ch>
-     * @license    http://www.opensource.org/licenses/mit-license.php The MIT License
-     * @copyright  Copyright (c) 2012 liip ag
-     *
-     * @package DrupalConnector
-     * @subpackage Filter
-     */
+/**
+ * Abstraction of the procedural Drupal world into OOP.
+ *
+ * @author     Daniel Barsotti <daniel.barsotti@liip.ch>
+ * @license    http://www.opensource.org/licenses/mit-license.php The MIT License
+ * @copyright  Copyright (c) 2012 liip ag
+ *
+ * @package DrupalConnector
+ * @subpackage Filter
+ */
 
 namespace Liip\Drupal\Modules\DrupalConnector;
 
@@ -20,6 +20,35 @@ namespace Liip\Drupal\Modules\DrupalConnector;
  */
 class Filter
 {
+    /**
+     * Returns the ID of the default text format for a particular user.
+     *
+     * The default text format is the first available format that the user is
+     * allowed to access, when the formats are ordered by weight. It should
+     * generally be used as a default choice when presenting the user with a list
+     * of possible text formats (for example, in a node creation form).
+     *
+     * Conversely, when existing content that does not have an assigned text format
+     * needs to be filtered for display, the default text format is the wrong
+     * choice, because it is not guaranteed to be consistent from user to user, and
+     * some trusted users may have an unsafe text format set by default, which
+     * should not be used on text of unknown origin. Instead, the fallback format
+     * returned by filter_fallback_format() should be used, since that is intended
+     * to be a safe, consistent format that is always available to all users.
+     *
+     * @param $account
+     *   (optional) The user account to check. Defaults to the currently logged-in
+     *   user.
+     * @return
+     *   The ID of the user's default text format.
+     *
+     * @see filter_fallback_format()
+     */
+    public function filter_default_format($account = null)
+    {
+        return filter_default_format($account);
+    }
+
     /**
      * Load a text format object from the database.
      *
@@ -33,7 +62,8 @@ class Filter
      *
      * @see filter_format_exists()
      */
-    function filter_format_load($format_id) {
+    public function filter_format_load($format_id)
+    {
         return filter_format_load($format_id);
     }
 
@@ -62,7 +92,8 @@ class Filter
      *     - 'settings': (optional) An array of configured settings for the filter.
      *       See hook_filter_info() for details.
      */
-    function filter_format_save($format) {
+    public function filter_format_save($format)
+    {
         return filter_format_save($format);
     }
 
@@ -77,7 +108,8 @@ class Filter
      * @param $format
      *   The text format object to be disabled.
      */
-    function filter_format_disable($format) {
+    public function filter_format_disable($format)
+    {
         return filter_format_disable($format);
     }
 
@@ -94,14 +126,16 @@ class Filter
      *
      * @see filter_format_load()
      */
-    function filter_format_exists($format_id) {
+    public function filter_format_exists($format_id)
+    {
         return filter_format_exists($format_id);
     }
 
     /**
      * Display a text format form title.
      */
-    function filter_admin_format_title($format) {
+    public function filter_admin_format_title($format)
+    {
         return filter_admin_format_title($format);
     }
 
@@ -114,7 +148,8 @@ class Filter
      *   The machine-readable permission name, or FALSE if the provided text format
      *   is malformed or is the fallback format (which is available to all users).
      */
-    function filter_permission_name($format) {
+    public function filter_permission_name($format)
+    {
         return filter_permission_name($format);
     }
 
@@ -130,7 +165,8 @@ class Filter
      *
      * @see filter_formats_reset()
      */
-    function filter_formats($account = NULL) {
+    public function filter_formats($account = null)
+    {
         return filter_formats($account);
     }
 
@@ -139,7 +175,8 @@ class Filter
      *
      * @see filter_formats()
      */
-    function filter_formats_reset() {
+    public function filter_formats_reset()
+    {
         return filter_formats_reset();
     }
 
@@ -151,7 +188,8 @@ class Filter
      * @return
      *   An array of role names, keyed by role ID.
      */
-    function filter_get_roles_by_format($format) {
+    public function filter_get_roles_by_format($format)
+    {
         return filter_get_roles_by_format($format);
     }
 
@@ -164,7 +202,8 @@ class Filter
      *   An array of text format objects that are allowed for the role, keyed by
      *   the text format ID and ordered by weight.
      */
-    function filter_get_formats_by_role($rid) {
+    public function filter_get_formats_by_role($rid)
+    {
         return filter_get_formats_by_role($rid);
     }
 
@@ -192,7 +231,8 @@ class Filter
      *
      * @see filter_fallback_format()
      */
-    function filter_default_format($account = NULL) {
+    public function filter_default_format($account = null)
+    {
         return filter_default_format($account);
     }
 
@@ -222,21 +262,24 @@ class Filter
      * @see hook_filter_format_disable()
      * @see filter_default_format()
      */
-    function filter_fallback_format() {
+    public function filter_fallback_format()
+    {
         return filter_fallback_format();
     }
 
     /**
      * Returns the title of the fallback text format.
      */
-    function filter_fallback_format_title() {
+    public function filter_fallback_format_title()
+    {
         return filter_fallback_format_title();
     }
 
     /**
      * Return a list of all filters provided by modules.
      */
-    function filter_get_filters() {
+    public function filter_get_filters()
+    {
         return filter_get_filters();
     }
 
@@ -252,7 +295,8 @@ class Filter
      * @return
      *   TRUE if the given text format allows caching, FALSE otherwise.
      */
-    function filter_format_allowcache($format_id) {
+    public function filter_format_allowcache($format_id)
+    {
         return filter_format_allowcache($format_id);
     }
 
@@ -271,7 +315,8 @@ class Filter
      *   An array of filter objects associated to the given text format, keyed by
      *   filter name.
      */
-    function filter_list_format($format_id) {
+    public function filter_list_format($format_id)
+    {
         return filter_list_format($format_id);
     }
 
@@ -300,7 +345,8 @@ class Filter
      *
      * @ingroup sanitization
      */
-    function check_markup($text, $format_id = NULL, $langcode = '', $cache = FALSE) {
+    public function check_markup($text, $format_id = null, $langcode = '', $cache = FALSE)
+    {
         return check_markup($text, $format_id, $langcode, $cache);
     }
 
@@ -313,7 +359,7 @@ class Filter
      *   #base_type or 'textarea' by default.
      * - format: Holds the text format fieldset and the text format selection, using
      *   the text format id specified in #format or the user's default format by
-     *   default, if NULL.
+     *   default, if null.
      *
      * The resulting value for the element will be an array holding the value and the
      * format.  For example, the value for the body element will be:
@@ -326,13 +372,14 @@ class Filter
      *   The form element to process. Properties used:
      *   - #base_type: The form element #type to use for the 'value' element.
      *     'textarea' by default.
-     *   - #format: (optional) The text format id to preselect. If NULL or not set,
+     *   - #format: (optional) The text format id to preselect. If null or not set,
      *     the default format for the current user will be used.
      *
      * @return
      *   The expanded element.
      */
-    function filter_process_format($element) {
+    public function filter_process_format($element)
+    {
         return filter_process_format($element);
     }
 
@@ -347,7 +394,8 @@ class Filter
      *
      * @see filter_process_format()
      */
-    function filter_form_access_denied($element) {
+    public function filter_form_access_denied($element)
+    {
         return filter_form_access_denied($element);
     }
 
@@ -360,7 +408,8 @@ class Filter
      *
      * @ingroup themeable
      */
-    function theme_text_format_wrapper($variables) {
+    public function theme_text_format_wrapper($variables)
+    {
         return theme_text_format_wrapper($variables);
     }
 
@@ -376,7 +425,8 @@ class Filter
      * @return
      *   Boolean TRUE if the user is allowed to access the given format.
      */
-    function filter_access($format, $account = NULL) {
+    public function filter_access($format, $account = null)
+    {
         return filter_access($format, $account);
     }
 
@@ -394,7 +444,8 @@ class Filter
      * @return
      *   A DOMDocument that represents the loaded (X)HTML snippet.
      */
-    function filter_dom_load($text) {
+    public function filter_dom_load($text)
+    {
         return filter_dom_load($text);
     }
 
@@ -413,7 +464,8 @@ class Filter
      * @return
      *   A valid (X)HTML snippet, as a string.
      */
-    function filter_dom_serialize($dom_document) {
+    public function filter_dom_serialize($dom_document)
+    {
         return filter_dom_serialize($dom_document);
     }
 
@@ -436,7 +488,8 @@ class Filter
      * @param $comment_end
      *   String to use as a comment end marker to escape the CDATA declaration.
      */
-    function filter_dom_serialize_escape_cdata_element($dom_document, $dom_element, $comment_start = '//', $comment_end = '') {
+    public function filter_dom_serialize_escape_cdata_element($dom_document, $dom_element, $comment_start = '//', $comment_end = '')
+    {
         return filter_dom_serialize_escape_cdata_element($dom_document, $dom_element, $comment_start, $comment_end);
     }
 
@@ -445,7 +498,8 @@ class Filter
      *
      * @ingroup themeable
      */
-    function theme_filter_tips_more_info() {
+    public function theme_filter_tips_more_info()
+    {
         return theme_filter_tips_more_info();
     }
 
@@ -458,7 +512,8 @@ class Filter
      *
      * @ingroup themeable
      */
-    function theme_filter_guidelines($variables) {
+    public function theme_filter_guidelines($variables)
+    {
         return theme_filter_guidelines($variables);
     }
 }

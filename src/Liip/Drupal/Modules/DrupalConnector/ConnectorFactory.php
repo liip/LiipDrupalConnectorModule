@@ -13,9 +13,12 @@
 
 namespace Liip\Drupal\Modules\DrupalConnector;
 
+use Liip\Drupal\Modules\DrupalConnector\Node\Revision;
+
 /**
  * Factory to get connectors instances. Caches the instances.
  * @author Daniel Barsotti <daniel.barsotti@liip.ch>
+ * @author Bastian Feder <drupal@bastian-feder.de>
  */
 class ConnectorFactory
 {
@@ -45,6 +48,11 @@ class ConnectorFactory
     protected static $nodeConnector;
 
     /**
+     * @var Revision
+     */
+    protected static $nodeRevisionConnector;
+
+    /**
      * @var User
      */
     protected static $userConnector;
@@ -58,6 +66,16 @@ class ConnectorFactory
      * @var Filter
      */
     protected static $filterConnector;
+
+    /**
+     * @var Theme
+     */
+    protected static $themeConnector;
+
+    /**
+     * @var Form
+     */
+    protected static $formConnector;
 
     /**
      * @static
@@ -161,5 +179,44 @@ class ConnectorFactory
         }
 
         return self::$filterConnector;
+    }
+
+    /**
+     * @static
+     * @return Theme
+     */
+    public static function getThemeConnector()
+    {
+        if (is_null(self::$themeConnector)) {
+            self::$themeConnector = new Theme();
+        }
+
+        return self::$themeConnector;
+    }
+
+    /**
+     * @static
+     * @return Form
+     */
+    public static function getFormConnector()
+    {
+        if (is_null(self::$formConnector)) {
+            self::$formConnector = new Form();
+        }
+
+        return self::$formConnector;
+    }
+
+    /**
+     * @static
+     * @return Revision
+     */
+    public static function getNodeRevisionConnector()
+    {
+        if (is_null(self::$nodeRevisionConnector)) {
+            self::$nodeRevisionConnector = new Revision();
+        }
+
+        return self::$nodeRevisionConnector;
     }
 }

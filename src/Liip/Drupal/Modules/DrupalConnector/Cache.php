@@ -40,10 +40,10 @@ class Cache
      *
      * @return An array of the items successfully returned from cache indexed by cid.
      */
-     public function cache_get_multiple(array &$cids, $bin = 'cache')
-     {
-         return cache_get_multiple($cids, $bin);
-     }
+    public function cache_get_multiple(array &$cids, $bin = 'cache')
+    {
+        return cache_get_multiple($cids, $bin);
+    }
 
     /**
      * Persists the given data in to the cache.

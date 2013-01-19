@@ -43,7 +43,8 @@ class Database
      *
      * @link http://api.drupal.org/api/drupal/includes!database!database.inc/function/db_add_field/7
      */
-    public function db_add_field($table, $field, $spec, $keys_new = array()) {
+    public function db_add_field($table, $field, $spec, $keys_new = array())
+    {
         db_add_field($table, $field, $spec, $keys_new);
     }
 
@@ -59,7 +60,8 @@ class Database
      *
      * @link http://api.drupal.org/api/drupal/includes!database!database.inc/function/db_add_index/7
      */
-    public function db_add_index($table, $name, $fields) {
+    public function db_add_index($table, $name, $fields)
+    {
         return db_add_index($table, $name, $fields);
     }
 
@@ -73,7 +75,8 @@ class Database
      *
      * @link http://api.drupal.org/api/drupal/includes!database!database.inc/function/db_add_primary_key/7
      */
-    public function db_add_primary_key($table, $fields) {
+    public function db_add_primary_key($table, $fields)
+    {
         return db_add_primary_key($table, $fields);
     }
 
@@ -89,7 +92,8 @@ class Database
      *
      * @link http://api.drupal.org/api/drupal/includes!database!database.inc/function/db_add_unique_key/7
      */
-    public function db_add_unique_key($table, $name, $fields) {
+    public function db_add_unique_key($table, $name, $fields)
+    {
         return db_add_unique_key($table, $name, $fields);
     }
 
@@ -100,7 +104,8 @@ class Database
      *
      * @link http://api.drupal.org/api/drupal/includes!database!database.inc/function/db_and/7
      */
-    public function db_and() {
+    public function db_and()
+    {
         return db_and();
     }
 
@@ -166,7 +171,8 @@ class Database
      *
      * @link http://api.drupal.org/api/drupal/includes!database!database.inc/function/db_change_field/7
      */
-    public function db_change_field($table, $field, $field_new, $spec, $keys_new = array()) {
+    public function db_change_field($table, $field, $field_new, $spec, $keys_new = array())
+    {
         return db_change_field($table, $field, $field_new, $spec, $keys_new);
     }
 
@@ -179,7 +185,8 @@ class Database
      *
      * @link http://api.drupal.org/api/drupal/includes!database!database.inc/function/db_close/7
      */
-    public function db_close(array $options = array()) {
+    public function db_close(array $options = array())
+    {
         db_close($options);
     }
 
@@ -195,7 +202,8 @@ class Database
      *
      * @link http://api.drupal.org/api/drupal/includes!database!database.inc/function/db_condition/7
      */
-    public function db_condition($conjunction) {
+    public function db_condition($conjunction)
+    {
         return db_condition($conjunction);
     }
 
@@ -209,7 +217,8 @@ class Database
      *
      * @link http://api.drupal.org/api/drupal/includes!database!database.inc/function/db_create_table/7
      */
-    public function db_create_table($name, $table) {
+    public function db_create_table($name, $table)
+    {
         return db_create_table($name, $table);
     }
 
@@ -226,7 +235,8 @@ class Database
      *
      * @link http://api.drupal.org/api/drupal/includes!database!database.inc/function/db_delete/7
      */
-    public function db_delete($table, array $options = array()) {
+    public function db_delete($table, array $options = array())
+    {
         return db_delete($table, $options);
     }
 
@@ -238,7 +248,8 @@ class Database
      *
      * @link http://api.drupal.org/api/drupal/includes!database!database.inc/function/db_driver/7
      */
-    public function db_driver() {
+    public function db_driver()
+    {
         return db_driver();
     }
 
@@ -252,7 +263,8 @@ class Database
      *
      * @link http://api.drupal.org/api/drupal/includes!database!database.inc/function/db_drop_field/7
      */
-    function db_drop_field($table, $field) {
+    function db_drop_field($table, $field)
+    {
         db_drop_field($table, $field);
     }
 
@@ -266,7 +278,8 @@ class Database
      *
      * @link http://api.drupal.org/api/drupal/includes!database!database.inc/function/db_drop_index/7
      */
-    public function db_drop_index($table, $name) {
+    public function db_drop_index($table, $name)
+    {
         return db_drop_index($table, $name);
     }
 
@@ -278,7 +291,8 @@ class Database
      *
      * @link http://api.drupal.org/api/drupal/includes!database!database.inc/function/db_drop_primary_key/7
      */
-    public function db_drop_primary_key($table) {
+    public function db_drop_primary_key($table)
+    {
         return db_drop_primary_key($table);
     }
 
@@ -290,7 +304,8 @@ class Database
      *
      * @link http://api.drupal.org/api/drupal/includes!database!database.inc/function/db_drop_table/7
      */
-    public function db_drop_table($table) {
+    public function db_drop_table($table)
+    {
         db_drop_table($table);
     }
 
@@ -304,7 +319,8 @@ class Database
      *
      * @link http://api.drupal.org/api/drupal/includes!database!database.inc/function/db_drop_unique_key/7
      */
-    public function db_drop_unique_key($table, $name) {
+    public function db_drop_unique_key($table, $name)
+    {
         return db_drop_unique_key($table, $name);
     }
 
@@ -321,7 +337,8 @@ class Database
      *
      * @link http://api.drupal.org/api/drupal/includes!database!database.inc/function/db_escape_field/7
      */
-    public function db_escape_field($field) {
+    public function db_escape_field($field)
+    {
         return db_escape_field($field);
     }
 
@@ -338,7 +355,8 @@ class Database
      *
      * @link http://api.drupal.org/api/drupal/includes!database!database.inc/function/db_escape_table/7
      */
-    public function db_escape_table($table) {
+    public function db_escape_table($table)
+    {
         return db_escape_table($table);
     }
 
@@ -355,7 +373,8 @@ class Database
      *
      * @link http://api.drupal.org/api/drupal/includes!database!database.inc/function/db_field_exists/7
      */
-    public function db_field_exists($table, $field) {
+    public function db_field_exists($table, $field)
+    {
         return db_field_exists($table, $field);
     }
 
@@ -373,7 +392,8 @@ class Database
      *
      * @link http://api.drupal.org/api/drupal/includes!database!database.inc/function/db_field_names/7
      */
-    public function db_field_names($fields) {
+    public function db_field_names($fields)
+    {
         return db_field_names($fields);
     }
 
@@ -389,7 +409,8 @@ class Database
      *
      * @link http://api.drupal.org/api/drupal/includes!database!database.inc/function/db_field_set_default/7
      */
-    public function db_field_set_default($table, $field, $default) {
+    public function db_field_set_default($table, $field, $default)
+    {
         return db_field_set_default($table, $field, $default);
     }
 
@@ -403,7 +424,8 @@ class Database
      *
      * @link http://api.drupal.org/api/drupal/includes!database!database.inc/function/db_field_set_no_default/7
      */
-    public function db_field_set_no_default($table, $field) {
+    public function db_field_set_no_default($table, $field)
+    {
         return db_field_set_no_default($table, $field);
     }
 
@@ -419,7 +441,8 @@ class Database
      *
      * @link http://api.drupal.org/api/drupal/includes!database!database.inc/function/db_find_tables/7
      */
-    public function db_find_tables($table_expression) {
+    public function db_find_tables($table_expression)
+    {
         return db_find_tables($table_expression);
     }
 
@@ -428,7 +451,8 @@ class Database
      *
      * @link http://api.drupal.org/api/drupal/includes!database!database.inc/function/db_ignore_slave/7
      */
-    public function db_ignore_slave() {
+    public function db_ignore_slave()
+    {
         db_ignore_slave();
     }
 
@@ -445,7 +469,8 @@ class Database
      *
      * @link http://api.drupal.org/api/drupal/includes!database!database.inc/function/db_index_exists/7
      */
-    public function db_index_exists($table, $name) {
+    public function db_index_exists($table, $name)
+    {
         return db_index_exists($table, $name);
     }
 
@@ -462,7 +487,8 @@ class Database
      *
      * @link http://api.drupal.org/api/drupal/includes!database!database.inc/function/db_insert/7
      */
-    public function db_insert($table, array $options = array()) {
+    public function db_insert($table, array $options = array())
+    {
         return db_insert($table, $options);
     }
 
@@ -493,7 +519,8 @@ class Database
      *
      * @link http://api.drupal.org/api/drupal/includes!database!database.inc/function/db_like/7
      */
-    public function db_like($string) {
+    public function db_like($string)
+    {
         return db_like($string);
     }
 
@@ -510,7 +537,8 @@ class Database
      *
      * @link http://api.drupal.org/api/drupal/includes!database!database.inc/function/db_merge/7
      */
-    public function db_merge($table, array $options = array()) {
+    public function db_merge($table, array $options = array())
+    {
         return db_merge($table, $options);
     }
 
@@ -531,7 +559,8 @@ class Database
      *
      * @link http://api.drupal.org/api/drupal/includes!database!database.inc/function/db_next_id/7
      */
-    public function db_next_id($existing_id = 0) {
+    public function db_next_id($existing_id = 0)
+    {
         return db_next_id($existing_id);
     }
 
@@ -542,7 +571,8 @@ class Database
      *
      * @link http://api.drupal.org/api/drupal/includes!database!database.inc/function/db_or/7
      */
-    public function db_or() {
+    public function db_or()
+    {
         return db_or();
     }
 
@@ -575,7 +605,8 @@ class Database
      *
      * @link http://api.drupal.org/api/drupal/includes!database!database.inc/function/db_query/7
      */
-    public function db_query() {
+    public function db_query()
+    {
         $args = func_get_args();
         return call_user_func_array('db_query', $args);
     }
@@ -606,7 +637,8 @@ class Database
      *
      * @link http://api.drupal.org/api/drupal/includes!database!database.inc/function/db_query_range/7
      */
-    public function db_query_range($query, $from, $count, array $args = array(), array $options = array()) {
+    public function db_query_range($query, $from, $count, array $args = array(), array $options = array())
+    {
         return db_query_range($query, $from, $count, $args, $options);
     }
 
@@ -634,7 +666,8 @@ class Database
      *
      * @link http://api.drupal.org/api/drupal/includes!database!database.inc/function/db_query_temporary/7
      */
-    public function db_query_temporary($query, array $args = array(), array $options = array()) {
+    public function db_query_temporary($query, array $args = array(), array $options = array())
+    {
         return db_query_temporary($query, $args, $options);
     }
 
@@ -648,7 +681,8 @@ class Database
      *
      * @link http://api.drupal.org/api/drupal/includes!database!database.inc/function/db_rename_table/7
      */
-    public function db_rename_table($table, $new_name) {
+    public function db_rename_table($table, $new_name)
+    {
         db_rename_table($table, $new_name);
     }
 
@@ -668,7 +702,8 @@ class Database
      *
      * @link http://api.drupal.org/api/drupal/includes!database!database.inc/function/db_select/7
      */
-    public function db_select($table, $alias = NULL, array $options = array()) {
+    public function db_select($table, $alias = NULL, array $options = array())
+    {
         return db_select($table, $alias, $options);
     }
 
@@ -683,7 +718,8 @@ class Database
      *
      * @link http://api.drupal.org/api/drupal/includes!database!database.inc/function/db_set_active/7
      */
-    public function db_set_active($key = 'default') {
+    public function db_set_active($key = 'default')
+    {
         return db_set_active($key);
     }
 
@@ -698,7 +734,8 @@ class Database
      *
      * @link http://api.drupal.org/api/drupal/includes!database!database.inc/function/db_table_exists/7
      */
-    public function db_table_exists($table) {
+    public function db_table_exists($table)
+    {
         return db_table_exists($table);
     }
 
@@ -716,7 +753,8 @@ class Database
      *
      * @link http://api.drupal.org/api/drupal/includes!database!database.inc/function/db_transaction/7
      */
-    public function db_transaction($name = NULL, array $options = array()) {
+    public function db_transaction($name = NULL, array $options = array())
+    {
         return db_transaction($name, $options);
     }
 
@@ -733,7 +771,8 @@ class Database
      *
      * @link http://api.drupal.org/api/drupal/includes!database!database.inc/function/db_truncate/7
      */
-    public function db_truncate($table, array $options = array()) {
+    public function db_truncate($table, array $options = array())
+    {
         return db_truncate($table, $options);
     }
 
@@ -750,7 +789,8 @@ class Database
      *
      * @link http://api.drupal.org/api/drupal/includes!database!database.inc/function/db_update/7
      */
-    public function db_update($table, array $options = array()) {
+    public function db_update($table, array $options = array())
+    {
         return db_update($table, $options);
     }
 
@@ -761,7 +801,8 @@ class Database
      *
      * @link http://api.drupal.org/api/drupal/includes!database!database.inc/function/db_xor/7
      */
-    public function db_xor() {
+    public function db_xor()
+    {
         return db_xor();
     }
 }
