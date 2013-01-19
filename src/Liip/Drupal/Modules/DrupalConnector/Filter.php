@@ -208,35 +208,6 @@ class Filter
     }
 
     /**
-     * Returns the ID of the default text format for a particular user.
-     *
-     * The default text format is the first available format that the user is
-     * allowed to access, when the formats are ordered by weight. It should
-     * generally be used as a default choice when presenting the user with a list
-     * of possible text formats (for example, in a node creation form).
-     *
-     * Conversely, when existing content that does not have an assigned text format
-     * needs to be filtered for display, the default text format is the wrong
-     * choice, because it is not guaranteed to be consistent from user to user, and
-     * some trusted users may have an unsafe text format set by default, which
-     * should not be used on text of unknown origin. Instead, the fallback format
-     * returned by filter_fallback_format() should be used, since that is intended
-     * to be a safe, consistent format that is always available to all users.
-     *
-     * @param $account
-     *   (optional) The user account to check. Defaults to the currently logged-in
-     *   user.
-     * @return
-     *   The ID of the user's default text format.
-     *
-     * @see filter_fallback_format()
-     */
-    public function filter_default_format($account = null)
-    {
-        return filter_default_format($account);
-    }
-
-    /**
      * Returns the ID of the fallback text format that all users have access to.
      *
      * The fallback text format is a regular text format in every respect, except
