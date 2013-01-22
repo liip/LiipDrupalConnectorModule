@@ -78,6 +78,11 @@ class ConnectorFactory
     protected static $formConnector;
 
     /**
+     * @var Menu
+     */
+    protected static $menuConnector;
+
+    /**
      * @static
      * @return Cache
      */
@@ -218,5 +223,18 @@ class ConnectorFactory
         }
 
         return self::$nodeRevisionConnector;
+    }
+
+    /**
+     * @static
+     * @return Menu
+     */
+    public static function getMenuConnector()
+    {
+        if (is_null(self::$menuConnector)) {
+            self::$menuConnector = new Menu();
+        }
+
+        return self::$menuConnector;
     }
 }
