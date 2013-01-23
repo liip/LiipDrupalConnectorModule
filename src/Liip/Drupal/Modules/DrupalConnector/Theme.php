@@ -127,7 +127,7 @@ class Theme
      */
     public function theme($hook, $variables = array())
     {
-        return theme($hook $variables);
+        return theme($hook, $variables);
     }
 
     /**
