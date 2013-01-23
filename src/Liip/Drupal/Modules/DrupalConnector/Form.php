@@ -45,6 +45,6 @@ class Form
      */
     public function drupal_get_form($form_id)
     {
-        return drupal_get_form($form_id);
+        return call_user_func_array('drupal_get_form', func_get_args());
     }
 }
