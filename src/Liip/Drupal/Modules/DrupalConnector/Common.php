@@ -638,6 +638,24 @@ class Common
     }
 
     /**
+     * Unsets a persistent variable.
+     *
+     * Case-sensitivity of the variable_* functions depends on the database
+     * collation used. To avoid problems, always use lower case for persistent
+     * variable names.
+     *
+     * @param $name
+     *   The name of the variable to undefine.
+     *
+     * @see variable_get()
+     * @see variable_set()
+     */
+    public function variable_del($name) 
+    {
+        variable_del($name);
+    }
+
+    /**
      * Logs a system message.
      *
      * @param string  $type       The category to which this message belongs. Can be any string, but the
