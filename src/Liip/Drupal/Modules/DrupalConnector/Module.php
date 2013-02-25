@@ -149,6 +149,21 @@ class Module
         return module_exists($module);
     }
 
+    
+    /**
+     * Determines whether a module implements a hook.
+     *
+     * @param $module The name of the module (without the .module extension).
+     * @param $hook   The name of the hook (e.g. "help" or "menu").
+     *
+     * @return
+     *     TRUE if the module is both installed and enabled, and the hook is
+     *     implemented in that module.
+     */
+    function module_hook($module, $hook) {
+        module_hook($module, $hook);
+    }
+
     /**
      * Invoke a hook in a particular module.
      *
