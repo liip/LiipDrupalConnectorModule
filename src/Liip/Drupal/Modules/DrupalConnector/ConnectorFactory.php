@@ -78,6 +78,12 @@ class ConnectorFactory
     protected static $formConnector;
 
     /**
+     * @var Path
+     */
+    protected static $pathConnector;
+
+
+    /**
      * @static
      * @return Cache
      */
@@ -218,5 +224,18 @@ class ConnectorFactory
         }
 
         return self::$nodeRevisionConnector;
+    }
+
+    /**
+     * @static
+     * @return Path
+     */
+    public static function getPathConnector()
+    {
+        if (is_null(self::$pathConnector)) {
+            self::$pathConnector = new Path();
+        }
+
+        return self::$pathConnector;
     }
 }
