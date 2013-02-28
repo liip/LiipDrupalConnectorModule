@@ -161,7 +161,7 @@ class Module
      *     implemented in that module.
      */
     function module_hook($module, $hook) {
-        module_hook($module, $hook);
+        return module_hook($module, $hook);
     }
 
     /**
