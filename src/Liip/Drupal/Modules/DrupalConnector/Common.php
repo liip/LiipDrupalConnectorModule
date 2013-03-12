@@ -374,6 +374,45 @@ class Common
     }
 
     /**
+     * Converts a PHP variable into its JavaScript equivalent.
+     *
+     * We use HTML-safe strings, with several characters escaped.
+     *
+     * @see drupal_json_decode()
+     * @see drupal_json_encode_helper()
+     * @ingroup php_wrappers
+     */
+    public function drupal_json_encode($var)
+    {
+        return drupal_json_encode($var);
+    }
+
+    /**
+     * Converts an HTML-safe JSON string into its PHP equivalent.
+     *
+     * @see drupal_json_encode()
+     * @ingroup php_wrappers
+     */
+    public function drupal_json_decode($var)
+    {
+        return drupal_json_decode($var);
+    }
+
+    /**
+     * Returns data in JSON format.
+     *
+     * This function should be used for JavaScript callback functions returning
+     * data in JSON format. It sets the header for JavaScript output.
+     *
+     * @param $var
+     *   (optional) If set, the variable will be converted to JSON and output.
+     */
+    public function drupal_json_output($var = NULL)
+    {
+        return drupal_json_output($var);
+    }
+
+    /**
      * Delivers a "page not found" error to the browser.
      *
      * Page callback functions wanting to report a "page not found" message should
@@ -650,7 +689,7 @@ class Common
      * @see variable_get()
      * @see variable_set()
      */
-    public function variable_del($name) 
+    public function variable_del($name)
     {
         variable_del($name);
     }
