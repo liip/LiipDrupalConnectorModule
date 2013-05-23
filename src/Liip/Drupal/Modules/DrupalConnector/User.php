@@ -88,7 +88,7 @@ class User
      */
     public function user_load($uid, $reset = false)
     {
-        return user_load($user_info, $reset);
+        return user_load($uid, $reset);
     }
 
     /**
