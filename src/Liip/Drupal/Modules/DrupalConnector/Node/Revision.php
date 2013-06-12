@@ -27,7 +27,7 @@ class Revision
      *
      * @return boolean
      */
-    function node_revision_delete($revision_id)
+    public function node_revision_delete($revision_id)
     {
         return node_revision_delete($revision_id);
     }
@@ -38,7 +38,7 @@ class Revision
      * @param \stdClass $node
      * @return \stdClass[] List of every revision of the given node.
      */
-    function node_revision_list(\stdClass $node)
+    public function node_revision_list(\stdClass $node)
     {
         return node_revision_list($node);
     }
