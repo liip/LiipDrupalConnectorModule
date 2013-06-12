@@ -326,7 +326,7 @@ class Common
      * @param $name
      *   The name of the item for which the path is requested.
      *
-     * @return
+     * @return string
      *   The path to the requested item.
      */
     public function drupal_get_path($type, $name)
@@ -337,7 +337,7 @@ class Common
     /**
      * Ensures the private key variable used to generate tokens is set.
      *
-     * @return
+     * @return string
      *   The private key.
      */
     public function drupal_get_private_key()
@@ -406,6 +406,8 @@ class Common
 
     /**
      * Converts an HTML-safe JSON string into its PHP equivalent.
+     *
+     * @return mixed
      *
      * @see drupal_json_encode()
      * @ingroup php_wrappers
@@ -479,7 +481,7 @@ class Common
      *   (optional) Language code to translate to. Defaults to the language used to
      *   display the page.
      *
-     * @return
+     * @return mixed
      *   A translated date string in the requested format.
      */
     public function format_date($timestamp, $type = 'medium', $format = '', $timezone = null, $langcode = null)
