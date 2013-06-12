@@ -84,6 +84,8 @@ class ConnectorFactory
 
 
     /**
+     * Provides an instance of the Cache object
+     *
      * @static
      * @return Cache
      */
@@ -97,6 +99,8 @@ class ConnectorFactory
     }
 
     /**
+     * Provides an instance of the Common object
+     *
      * @static
      * @return Common
      */
@@ -110,6 +114,8 @@ class ConnectorFactory
     }
 
     /**
+     * Provides an instance of the Database object
+     *
      * @static
      * @return Database
      */
@@ -123,6 +129,8 @@ class ConnectorFactory
     }
 
     /**
+     * Provides an instance of the Module object
+     *
      * @static
      * @return Module
      */
@@ -136,6 +144,8 @@ class ConnectorFactory
     }
 
     /**
+     * Provides an instance of the Node object
+     *
      * @static
      * @return Node
      */
@@ -149,6 +159,8 @@ class ConnectorFactory
     }
 
     /**
+     * Provides an instance of the User object
+     *
      * @static
      * @return User
      */
@@ -162,6 +174,8 @@ class ConnectorFactory
     }
 
     /**
+     * Provides an instance of the Bootstrap object
+     *
      * @static
      * @return Bootstrap
      */
@@ -175,6 +189,8 @@ class ConnectorFactory
     }
 
     /**
+     * Provides an instance of the Filter object
+     *
      * @static
      * @return Filter
      */
@@ -188,6 +204,8 @@ class ConnectorFactory
     }
 
     /**
+     * Provides an instance of the Theme object
+     *
      * @static
      * @return Theme
      */
@@ -201,6 +219,8 @@ class ConnectorFactory
     }
 
     /**
+     * Provides an instance of the Form object
+     *
      * @static
      * @return Form
      */
@@ -214,6 +234,8 @@ class ConnectorFactory
     }
 
     /**
+     * Provides an instance of the Revision object
+     *
      * @static
      * @return Revision
      */
@@ -227,6 +249,8 @@ class ConnectorFactory
     }
 
     /**
+     * Provides an instance of the Path object
+     *
      * @static
      * @return Path
      */
