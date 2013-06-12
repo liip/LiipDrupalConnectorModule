@@ -2,11 +2,9 @@
 
 /**
  * Abstraction of the procedural Drupal world into OOP.
- *
  * @author     Bastian Feder <drupal@bastian-feder.de>
  * @license    http://www.opensource.org/licenses/mit-license.php The MIT License
  * @copyright  Copyright (c) 2012 liip ag
- *
  * @package DrupalConnector
  * @subpackage Database
  */
@@ -15,7 +13,6 @@ namespace Liip\Drupal\Modules\DrupalConnector;
 
 /**
  * Cumulates the database functions of Drupal 7 in one class.
- *
  * Please order the functions alphabetically!
  */
 class Database
@@ -40,7 +37,6 @@ class Database
      *   db_change_field() for more explanation why.
      *
      * @see db_change_field()
-     *
      * @link http://api.drupal.org/api/drupal/includes!database!database.inc/function/db_add_field/7
      */
     public function db_add_field($table, $field, $spec, $keys_new = array())
@@ -51,33 +47,28 @@ class Database
     /**
      * Adds an index.
      *
-     * @param $table
-     *   The table to be altered.
-     * @param $name
-     *   The name of the index.
-     * @param $fields
-     *   An array of field names.
+     * @param string $table The table to be altered.
+     * @param string $name  The name of the index.
+     * @param array $fields An array of field names.
      *
      * @link http://api.drupal.org/api/drupal/includes!database!database.inc/function/db_add_index/7
      */
     public function db_add_index($table, $name, $fields)
     {
-        return db_add_index($table, $name, $fields);
+        db_add_index($table, $name, $fields);
     }
 
     /**
      * Adds a primary key to a database table.
      *
-     * @param $table
-     *   Name of the table to be altered.
-     * @param $fields
-     *   Array of fields for the primary key.
+     * @param string $table Name of the table to be altered.
+     * @param array $fields Array of fields for the primary key.
      *
      * @link http://api.drupal.org/api/drupal/includes!database!database.inc/function/db_add_primary_key/7
      */
     public function db_add_primary_key($table, $fields)
     {
-        return db_add_primary_key($table, $fields);
+        db_add_primary_key($table, $fields);
     }
 
     /**
@@ -94,14 +85,12 @@ class Database
      */
     public function db_add_unique_key($table, $name, $fields)
     {
-        return db_add_unique_key($table, $name, $fields);
+        db_add_unique_key($table, $name, $fields);
     }
 
     /**
      * Returns a new DatabaseCondition, set to "AND" all conditions together.
-     *
      * @return DatabaseCondition
-     *
      * @link http://api.drupal.org/api/drupal/includes!database!database.inc/function/db_and/7
      */
     public function db_and()
@@ -111,15 +100,12 @@ class Database
 
     /**
      * Changes a field definition.
-     *
      * IMPORTANT NOTE: To maintain database portability, you have to explicitly
      * recreate all indices and primary keys that are using the changed field.
-     *
      * That means that you have to drop all affected keys and indexes with
      * db_drop_{primary_key,unique_key,index}() before calling db_change_field().
      * To recreate the keys and indices, pass the key definitions as the optional
      * $keys_new argument directly to db_change_field().
-     *
      * For example, suppose you have:
      * @code
      * $schema['foo'] = array(
@@ -137,20 +123,16 @@ class Database
      *   array('type' => 'serial', 'not null' => TRUE),
      *   array('primary key' => array('bar')));
      * @endcode
-     *
      * The reasons for this are due to the different database engines:
-     *
      * On PostgreSQL, changing a field definition involves adding a new field and
      * dropping an old one which causes any indices, primary keys and sequences
      * (from serial-type fields) that use the changed field to be dropped.
-     *
      * On MySQL, all type 'serial' fields must be part of at least one key or index
      * as soon as they are created. You cannot use
      * db_add_{primary_key,unique_key,index}() for this purpose because the ALTER
      * TABLE command will fail to add the column without a key or index
      * specification. The solution is to use the optional $keys_new argument to
      * create the key or index at the same time as field.
-     *
      * You could use db_add_{primary_key,unique_key,index}() in all cases unless you
      * are converting a field to be type serial. You can use the $keys_new argument
      * in all cases.
@@ -173,7 +155,7 @@ class Database
      */
     public function db_change_field($table, $field, $field_new, $spec, $keys_new = array())
     {
-        return db_change_field($table, $field, $field_new, $spec, $keys_new);
+        db_change_field($table, $field, $field_new, $spec, $keys_new);
     }
 
     /**
@@ -192,14 +174,12 @@ class Database
 
     /**
      * Returns a new DatabaseCondition, set to the specified conjunction.
-     *
      * Internal API function call.  The db_and(), db_or(), and db_xor()
      * functions are preferred.
      *
-     * @param $conjunction
-     *   The conjunction to use for query conditions (AND, OR or XOR).
-     * @return DatabaseCondition
+     * @param string $conjunction The conjunction to use for query conditions (AND, OR or XOR).
      *
+     * @return DatabaseCondition
      * @link http://api.drupal.org/api/drupal/includes!database!database.inc/function/db_condition/7
      */
     public function db_condition($conjunction)
@@ -210,28 +190,23 @@ class Database
     /**
      * Creates a new table from a Drupal table definition.
      *
-     * @param $name
-     *   The name of the table to create.
-     * @param $table
-     *   A Schema API table definition array.
+     * @param string $name The name of the table to create.
+     * @param array $table A Schema API table definition array.
      *
      * @link http://api.drupal.org/api/drupal/includes!database!database.inc/function/db_create_table/7
      */
     public function db_create_table($name, $table)
     {
-        return db_create_table($name, $table);
+        db_create_table($name, $table);
     }
 
     /**
      * Returns a new DeleteQuery object for the active database.
      *
-     * @param $table
-     *   The table from which to delete.
-     * @param $options
-     *   An array of options to control how the query operates.
+     * @param string $table The table from which to delete.
+     * @param array $options An array of options to control how the query operates.
      *
-     * @return DeleteQuery
-     *   A new DeleteQuery object for this connection.
+     * @return DeleteQuery A new DeleteQuery object for this connection.
      *
      * @link http://api.drupal.org/api/drupal/includes!database!database.inc/function/db_delete/7
      */
@@ -242,10 +217,8 @@ class Database
 
     /**
      * Retrieves the name of the currently active database driver.
-     *
      * @return
      *   The name of the currently active database driver.
-     *
      * @link http://api.drupal.org/api/drupal/includes!database!database.inc/function/db_driver/7
      */
     public function db_driver()
@@ -326,7 +299,6 @@ class Database
 
     /**
      * Restricts a dynamic column or constraint name to safe characters.
-     *
      * Only keeps alphanumeric and underscores.
      *
      * @param $field
@@ -334,7 +306,6 @@ class Database
      *
      * @return
      *   The escaped field name as a string.
-     *
      * @link http://api.drupal.org/api/drupal/includes!database!database.inc/function/db_escape_field/7
      */
     public function db_escape_field($field)
@@ -344,7 +315,6 @@ class Database
 
     /**
      * Restricts a dynamic table name to safe characters.
-     *
      * Only keeps alphanumeric and underscores.
      *
      * @param $table
@@ -352,7 +322,6 @@ class Database
      *
      * @return
      *   The escaped table name as a string.
-     *
      * @link http://api.drupal.org/api/drupal/includes!database!database.inc/function/db_escape_table/7
      */
     public function db_escape_table($table)
@@ -370,7 +339,6 @@ class Database
      *
      * @return
      *   TRUE if the given column exists, otherwise FALSE.
-     *
      * @link http://api.drupal.org/api/drupal/includes!database!database.inc/function/db_field_exists/7
      */
     public function db_field_exists($table, $field)
@@ -380,7 +348,6 @@ class Database
 
     /**
      * Returns an array of field names from an array of key/index column specifiers.
-     *
      * This is usually an identity function but if a key/index uses a column prefix
      * specification, this function extracts just the name.
      *
@@ -389,7 +356,6 @@ class Database
      *
      * @return
      *   An array of field names.
-     *
      * @link http://api.drupal.org/api/drupal/includes!database!database.inc/function/db_field_names/7
      */
     public function db_field_names($fields)
@@ -438,7 +404,6 @@ class Database
      *
      * @return
      *   Array, both the keys and the values are the matching tables.
-     *
      * @link http://api.drupal.org/api/drupal/includes!database!database.inc/function/db_find_tables/7
      */
     public function db_find_tables($table_expression)
@@ -448,7 +413,6 @@ class Database
 
     /**
      * Sets a session variable specifying the lag time for ignoring a slave server.
-     *
      * @link http://api.drupal.org/api/drupal/includes!database!database.inc/function/db_ignore_slave/7
      */
     public function db_ignore_slave()
@@ -466,7 +430,6 @@ class Database
      *
      * @return
      *   TRUE if the given index exists, otherwise FALSE.
-     *
      * @link http://api.drupal.org/api/drupal/includes!database!database.inc/function/db_index_exists/7
      */
     public function db_index_exists($table, $name)
@@ -484,7 +447,6 @@ class Database
      *
      * @return InsertQuery
      *   A new InsertQuery object for this connection.
-     *
      * @link http://api.drupal.org/api/drupal/includes!database!database.inc/function/db_insert/7
      */
     public function db_insert($table, array $options = array())
@@ -494,11 +456,9 @@ class Database
 
     /**
      * Escapes characters that work as wildcard characters in a LIKE pattern.
-     *
      * The wildcard characters "%" and "_" as well as backslash are prefixed with
      * a backslash. Use this to do a search for a verbatim string without any
      * wildcard behavior.
-     *
      * For example, the following does a case-insensitive query for all rows whose
      * name starts with $prefix:
      * @code
@@ -507,7 +467,6 @@ class Database
      *   array(':pattern' => db_like($prefix) . '%')
      * );
      * @endcode
-     *
      * Backslash is defined as escape character for LIKE patterns in
      * DatabaseCondition::mapConditionOperator().
      *
@@ -516,7 +475,6 @@ class Database
      *
      * @return
      *   The escaped string.
-     *
      * @link http://api.drupal.org/api/drupal/includes!database!database.inc/function/db_like/7
      */
     public function db_like($string)
@@ -534,7 +492,6 @@ class Database
      *
      * @return MergeQuery
      *   A new MergeQuery object for this connection.
-     *
      * @link http://api.drupal.org/api/drupal/includes!database!database.inc/function/db_merge/7
      */
     public function db_merge($table, array $options = array())
@@ -544,7 +501,6 @@ class Database
 
     /**
      * Retrieves a unique id.
-     *
      * Use this function if for some reason you can't use a serial field. Using a
      * serial field is preferred, and InsertQuery::execute() returns the value of
      * the last ID inserted.
@@ -556,7 +512,6 @@ class Database
      *
      * @return
      *   An integer number larger than any number returned before for this sequence.
-     *
      * @link http://api.drupal.org/api/drupal/includes!database!database.inc/function/db_next_id/7
      */
     public function db_next_id($existing_id = 0)
@@ -566,9 +521,7 @@ class Database
 
     /**
      * Returns a new DatabaseCondition, set to "OR" all conditions together.
-     *
      * @return DatabaseCondition
-     *
      * @link http://api.drupal.org/api/drupal/includes!database!database.inc/function/db_or/7
      */
     public function db_or()
@@ -578,11 +531,9 @@ class Database
 
     /**
      * Executes an arbitrary query string against the active database.
-     *
      * Use this function for SELECT queries if it is just a simple query string.
      * If the caller or other modules need to change the query, use db_select()
      * instead.
-     *
      * Do not use this function for INSERT, UPDATE, or DELETE queries. Those should
      * be handled via db_insert(), db_update() and db_delete() respectively.
      *
@@ -600,14 +551,13 @@ class Database
      *
      * @return DatabaseStatementInterface
      *   A prepared statement object, already executed.
-     *
      * @see DatabaseConnection::defaultOptions()
-     *
      * @link http://api.drupal.org/api/drupal/includes!database!database.inc/function/db_query/7
      */
     public function db_query()
     {
         $args = func_get_args();
+
         return call_user_func_array('db_query', $args);
     }
 
@@ -632,9 +582,7 @@ class Database
      *
      * @return DatabaseStatementInterface
      *   A prepared statement object, already executed.
-     *
      * @see DatabaseConnection::defaultOptions()
-     *
      * @link http://api.drupal.org/api/drupal/includes!database!database.inc/function/db_query_range/7
      */
     public function db_query_range($query, $from, $count, array $args = array(), array $options = array())
@@ -644,7 +592,6 @@ class Database
 
     /**
      * Executes a query string and saves the result set to a temporary table.
-     *
      * The execution of the query string happens against the active database.
      *
      * @param $query
@@ -661,9 +608,7 @@ class Database
      *
      * @return
      *   The name of the temporary table.
-     *
      * @see DatabaseConnection::defaultOptions()
-     *
      * @link http://api.drupal.org/api/drupal/includes!database!database.inc/function/db_query_temporary/7
      */
     public function db_query_temporary($query, array $args = array(), array $options = array())
@@ -699,10 +644,9 @@ class Database
      *
      * @return SelectQuery
      *   A new SelectQuery object for this connection.
-     *
      * @link http://api.drupal.org/api/drupal/includes!database!database.inc/function/db_select/7
      */
-    public function db_select($table, $alias = NULL, array $options = array())
+    public function db_select($table, $alias = null, array $options = array())
     {
         return db_select($table, $alias, $options);
     }
@@ -715,7 +659,6 @@ class Database
      *
      * @return
      *   The key of the formerly active database.
-     *
      * @link http://api.drupal.org/api/drupal/includes!database!database.inc/function/db_set_active/7
      */
     public function db_set_active($key = 'default')
@@ -731,7 +674,6 @@ class Database
      *
      * @return
      *   TRUE if the given table exists, otherwise FALSE.
-     *
      * @link http://api.drupal.org/api/drupal/includes!database!database.inc/function/db_table_exists/7
      */
     public function db_table_exists($table)
@@ -750,10 +692,9 @@ class Database
      *
      * @return DatabaseTransaction
      *   A new DatabaseTransaction object for this connection.
-     *
      * @link http://api.drupal.org/api/drupal/includes!database!database.inc/function/db_transaction/7
      */
-    public function db_transaction($name = NULL, array $options = array())
+    public function db_transaction($name = null, array $options = array())
     {
         return db_transaction($name, $options);
     }
@@ -768,7 +709,6 @@ class Database
      *
      * @return TruncateQuery
      *   A new TruncateQuery object for this connection.
-     *
      * @link http://api.drupal.org/api/drupal/includes!database!database.inc/function/db_truncate/7
      */
     public function db_truncate($table, array $options = array())
@@ -786,7 +726,6 @@ class Database
      *
      * @return UpdateQuery
      *   A new UpdateQuery object for this connection.
-     *
      * @link http://api.drupal.org/api/drupal/includes!database!database.inc/function/db_update/7
      */
     public function db_update($table, array $options = array())
@@ -796,9 +735,7 @@ class Database
 
     /**
      * Returns a new DatabaseCondition, set to "XOR" all conditions together.
-     *
      * @return DatabaseCondition
-     *
      * @link http://api.drupal.org/api/drupal/includes!database!database.inc/function/db_xor/7
      */
     public function db_xor()
