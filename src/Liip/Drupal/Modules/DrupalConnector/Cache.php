@@ -38,7 +38,7 @@ class Cache
      * @param array  &$cids An array of cache IDs for the data to retrieve.
      * @param string $bin   The cache bin where the data is stored.
      *
-     * @return An array of the items successfully returned from cache indexed by cid.
+     * @return array An array of the items successfully returned from cache indexed by cid.
      */
     public function cache_get_multiple(array &$cids, $bin = 'cache')
     {
@@ -81,7 +81,7 @@ class Cache
      *
      * @param string $bin Name of the container check to be empty.
      *
-     * @return »true«, if the cache bin specified is empty.
+     * @return boolean »true«, if the cache bin specified is empty.
      */
     public function cache_is_empty($bin)
     {
