@@ -1,11 +1,9 @@
 <?php
 /**
  * Abstraction of the procedural Drupal world into OOP.
- *
  * @author     Daniel Barsotti <daniel.barsotti@liip.ch>
  * @license    http://www.opensource.org/licenses/mit-license.php The MIT License
  * @copyright  Copyright (c) 2012 liip ag
- *
  * @package    DrupalConnector
  * @subpackage Breadcrumb
  */
@@ -14,24 +12,20 @@ namespace Liip\Drupal\Modules\DrupalConnector;
 
 class Bootstrap
 {
-
     /**
      * Returns a component of the current Drupal path.
      *
      * When viewing a page at the path "admin/structure/types", for example, arg(0)
      * returns "admin", arg(1) returns "structure", and arg(2) returns "types".
-     *
      * Avoid use of this function where possible, as resulting code is hard to
      * read. In menu callback functions, attempt to use named arguments. See the
      * explanation in menu.inc for how to construct callbacks that take arguments.
      * When attempting to use this function to load an element from the current
      * path, e.g. loading the node on a node page, use menu_get_object() instead.
      *
-     * @param $index
-     *   The index of the component, where each component is separated by a '/'
-     *   (forward-slash), and where the first component has an index of 0 (zero).
-     * @param $path
-     *   A path to break into components. Defaults to the path of the current page.
+     * @param string|null $index The index of the component, where each component is separated by a '/'
+     *                            (forward-slash), and where the first component has an index of 0 (zero).
+     * @param string $path  A path to break into components. Defaults to the path of the current page.
      *
      * @return
      *   The component specified by $index, or null if the specified component was
@@ -62,41 +56,53 @@ class Bootstrap
      * database from a script without loading anything else, include bootstrap.inc
      * and call drupal_bootstrap(DRUPAL_BOOTSTRAP_DATABASE).
      *
-     * @param $phase
+     * @param string|null $phase
      *   A constant. Allowed values are the DRUPAL_BOOTSTRAP_* constants.
-     * @param $new_phase
+     * @param boolean $new_phase
      *   A boolean, set to false if calling drupal_bootstrap from inside a
      *   function called from drupal_bootstrap (recursion).
      *
-     * @return
-     *   The most recently completed phase.
+     * @return mixed The most recently completed phase.
      */
     public function drupal_bootstrap($phase = null, $new_phase = true)
     {
-        drupal_bootstrap($phase, $new_phase);
+        return drupal_bootstrap($phase, $new_phase);
     }
 
     /**
-     * Sets a message which reflects the status of the performed operation.
+     * Sets a message to display to the user.
      *
-     * If the function is called with no arguments, this function returns all set
-     * messages without clearing them.
+     * Messages are stored in a session variable and displayed in page.tpl.php via
+     * the $messages theme variable.
+     * Example usage:
+     * @code
+     * drupal_set_message(t('An error occurred and processing did not complete.'), 'error');
+     * @endcode
      *
-     * @param $message
-     *   The message to be displayed to the user. For consistency with other
-     *   messages, it should begin with a capital letter and end with a period.
-     * @param $type
-     *   The type of the message. One of the following values are possible:
+     * @param string $message
+     *   (optional) The translated message to be displayed to the user. For
+     *   consistency with other messages, it should begin with a capital letter and
+     *   end with a period.
+     * @param string $type
+     *   (optional) The message's type. Defaults to 'status'. These values are
+     *   supported:
      *   - 'status'
      *   - 'warning'
      *   - 'error'
-     * @param $repeat
-     *   If this is false and the message is already set, then the message won't
-     *   be repeated.
+     * @param bool $repeat
+     *   (optional) If this is FALSE and the message is already set, then the
+     *   message won't be repeated. Defaults to TRUE.
+     *
+     * @return array|null
+     *   A multidimensional array with keys corresponding to the set message types.
+     *   The indexed array values of each contain the set messages for that type.
+     *   Or, if there are no messages set, the function returns NULL.
+     * @see drupal_get_messages()
+     * @see theme_status_messages()
      */
     public function drupal_set_message($message = null, $type = 'status', $repeat = true)
     {
-        drupal_set_message($message, $type, $repeat);
+        return drupal_set_message($message, $type, $repeat);
     }
 
     /**
@@ -108,7 +114,6 @@ class Bootstrap
      * the page request. By centralizing static variable storage through this
      * function, other functions can rely on a consistent API for resetting any
      * other function's static variables.
-     *
      * Example:
      * @code
      * function language_list($field = 'language') {
@@ -137,7 +142,6 @@ class Bootstrap
      *   ...
      * }
      * @endcode
-     *
      * In a few cases, a function can have certainty that there is no legitimate
      * use-case for resetting that function's static variable. This is rare,
      * because when writing a function, it's hard to forecast all the situations in
@@ -145,7 +149,6 @@ class Bootstrap
      * does not depend on any information outside of the function that might change
      * during a single page request, then it's ok to use the "static" keyword
      * instead of the drupal_static() function.
-     *
      * Example:
      * @code
      * function actions_do(...) {
@@ -160,7 +163,6 @@ class Bootstrap
      *   $stack--;
      * }
      * @endcode
-     *
      * In a few cases, a function needs a resettable static variable, but the
      * function is called many times (100+) during a single page request, so
      * every microsecond of execution time that can be removed from the function
@@ -184,7 +186,6 @@ class Bootstrap
      * - http://php.net/manual/en/language.variables.scope.php#language.variables.scope.references
      * The example below shows the syntax needed to work around both limitations.
      * For benchmarks and more information, see http://drupal.org/node/619666.
-     *
      * Example:
      * @code
      * function user_access($string, $account = null) {
@@ -198,23 +199,22 @@ class Bootstrap
      * }
      * @endcode
      *
-     * @param $name
+     * @param string $name
      *   Globally unique name for the variable. For a function with only one static,
      *   variable, the function name (e.g. via the PHP magic __FUNCTION__ constant)
      *   is recommended. For a function with multiple static variables add a
      *   distinguishing suffix to the function name for each one.
-     * @param $default_value
+     * @param mixed $default_value
      *   Optional default value.
-     * @param $reset
+     * @param boolean $reset
      *   true to reset a specific named variable, or all variables if $name is null.
      *   Resetting every variable should only be used, for example, for running
      *   unit tests with a clean environment. Should be used only though via
      *   function drupal_static_reset() and the return value should not be used in
      *   this case.
      *
-     * @return
+     * @return mixed
      *   Returns a variable by reference.
-     *
      * @see drupal_static_reset()
      */
     public function &drupal_static($name, $default_value = null, $reset = false)
@@ -229,12 +229,13 @@ class Bootstrap
      *   The object to which the elements are appended.
      * @param $field
      *   The attribute of $obj whose value should be unserialized.
+     *
+     * @return \stdClass
      */
     public function drupal_unpack($obj, $field = 'data')
     {
-        drupal_unpack($obj, $field);
+        return drupal_unpack($obj, $field);
     }
-
 
     /**
      * Returns the IP address of the client machine.
@@ -243,8 +244,7 @@ class Bootstrap
      * instead of $_SERVER['REMOTE_ADDR'], which would be the IP address of
      * the proxy server, and not the client's. The actual header name can be
      * configured by the reverse_proxy_header variable.
-     *
-     * @return
+     * @return string
      *   IP address of client machine, adjusted for reverse proxy and/or cluster
      *   environments.
      */
@@ -265,12 +265,10 @@ class Bootstrap
      * - http://example.com/index.php returns an empty string (meaning: front page).
      * - http://example.com/index.php?page=1 returns an empty string.
      *
-     * @return
-     *   The requested Drupal URL path.
-     *
+     * @return string The requested Drupal URL path.
      * @see current_path()
      */
-    public function request_path() 
+    public function request_path()
     {
         return request_path();
     }
