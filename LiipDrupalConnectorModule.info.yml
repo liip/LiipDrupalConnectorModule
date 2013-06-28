@@ -1,0 +1,6 @@
+name: 'Liip DrupalConnector Module'
+description: 'An abstraction layer between the procedural world of Drupal and OOP.'
+package: Liip Drupal Modules
+type: module
+core: 8.x
+php: 5.3
