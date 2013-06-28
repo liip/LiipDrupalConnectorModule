@@ -16,6 +16,11 @@
             "name": "Daniel Barsotti",
             "email": "daniel.barsotti@liip.ch",
             "role": "maintainer"
+        },
+        {
+            "name": "Patrick Jezek",
+            "email": "patrick.jezek@liip.ch",
+            "role": "maintainer"
         }
     ],
 
