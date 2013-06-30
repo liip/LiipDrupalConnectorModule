@@ -125,18 +125,6 @@ class User
     }
 
     /**
-     * Save a user role to the database.
-     *
-     * @param \stdClass $role A role object to modify or add.
-     *
-     * @return false|integer Status indicating if the action was successful.
-     */
-    public function user_role_save(\stdClass $role)
-    {
-        return user_role_save($role);
-    }
-
-    /**
      * Persists the given account to the storage container.
      *
      * @param \stdClass $account  The user to be stored.
