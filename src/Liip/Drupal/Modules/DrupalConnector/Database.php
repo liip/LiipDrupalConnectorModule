@@ -554,11 +554,9 @@ class Database
      * @see DatabaseConnection::defaultOptions()
      * @link http://api.drupal.org/api/drupal/includes!database!database.inc/function/db_query/7
      */
-    public function db_query()
+    public function db_query($query, array $args = array(), array $options = array())
     {
-        $args = func_get_args();
-
-        return call_user_func_array('db_query', $args);
+        return db_query($query, $args, $options);
     }
 
     /**
