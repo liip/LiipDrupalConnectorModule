@@ -193,28 +193,16 @@ class Module
     }
 
     /**
-     * Invoke a hook in all enabled modules that implement it.
+     * Invokes a hook in all enabled modules that implement it.
      *
-     * This method does as well handle additionally passed arguments.
-     * These arguments will be passed to the hook function identified by
-     * $module and $hook.
+     * All arguments are passed by value. Use drupal_alter() if you need to pass
+     * arguments by reference.
      *
-     * Example:
-     * <code>
-     *  []
+     * @deprecated as of Drupal 8.0. Use
+     *   Drupal::moduleHandler()->invokeAll($hook).
      *
-     *  $blocks = module_invoke_all('block_view', 'map-block_1');
-     *
-     *  []
-     * </code>
-     *
-     * @param string $hook The name of the hook to invoke.
-     *
-     * @return array An array of return values of the hook implementations.
-     *                If modules return arrays from their implementations,
-     *                those are merged into one array.
-     *
-     * @link          http://api.drupal.org/api/drupal/includes!module.inc/function/module_invoke_all/7
+     * @see drupal_alter()
+     * @see \Drupal\Core\Extension\ModuleHandler::invokeAll()
      */
     public function module_invoke_all($hook)
     {
@@ -222,21 +210,15 @@ class Module
     }
 
     /**
-     * Determine which modules are implementing a hook.
+     * Determines which modules are implementing a hook.
      *
-     * @param string  $hook  The name of the hook (e.g. "help" or "menu").
-     * @param string  $sort  By default, modules are ordered by weight and filename, settings this option
-     *                       to TRUE, module list will be ordered by module name.
-     * @param boolean $reset For internal use only: Whether to force the stored list of hook
-     *                       implementations to be regenerated (such as after enabling a new module,
-     *                       before processing hook_enable).
+     * @deprecated as of Drupal 8.0. Use
+     *   Drupal::moduleHandler()->getImplementations($hook).
      *
-     * @return array An array with the names of the modules which are implementing this hook.
-     *
-     * @link http://api.drupal.org/api/drupal/includes!module.inc/function/module_implements/7
+     * @see \Drupal\Core\Extension\ModuleHandler::getImplementations()
      */
-    public function module_implements($hook, $sort = false, $reset = false)
+    public function module_implements($hook)
     {
-        return module_implements($hook, $sort, $reset);
+        return module_implements($hook);
     }
 }
