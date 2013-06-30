@@ -24,111 +24,6 @@ namespace Liip\Drupal\Modules\DrupalConnector;
 class Path
 {
     /**
-     * Initialize the $_GET['q'] variable to the proper normal path.
-     */
-    public function drupal_path_initialize()
-    {
-        drupal_path_initialize();
-    }
-
-    /**
-     * Given an alias, return its Drupal system URL if one exists. Given a Drupal
-     * system URL return one of its aliases if such a one exists. Otherwise,
-     * return false.
-     *
-     * @param string $action
-     *   One of the following values:
-     *   - wipe: delete the alias cache.
-     *   - alias: return an alias for a given Drupal system path (if one exists).
-     *   - source: return the Drupal system URL for a path alias (if one exists).
-     * @param string $path
-     *   The path to investigate for corresponding aliases or system URLs.
-     * @param string $path_language
-     *   Optional language code to search the path with. Defaults to the page language.
-     *   If there's no path defined for that language it will search paths without
-     *   language.
-     *
-     * @return bool|mixed Either a Drupal system path, an aliased path, or false if no path was
-     */
-    public function drupal_lookup_path($action, $path = '', $path_language = null)
-    {
-        return drupal_lookup_path($action, $path, $path_language);
-    }
-
-    /**
-     * Cache system paths for a page.
-     *
-     * Cache an array of the system paths available on each page. We assume
-     * that aliases will be needed for the majority of these paths during
-     * subsequent requests, and load them in a single query during
-     * drupal_lookup_path().
-     */
-    public function drupal_cache_system_paths()
-    {
-        drupal_cache_system_paths();
-    }
-
-    /**
-     * Given an internal Drupal path, return the alias set by the administrator.
-     *
-     * If no path is provided, the public function will return the alias of the current
-     * page.
-     *
-     * @param $path
-     *   An internal Drupal path.
-     * @param $path_language
-     *   An optional language code to look up the path in.
-     *
-     * @return
-     *   An aliased path if one was found, or the original path if no alias was
-     *   found.
-     */
-    public function drupal_get_path_alias($path = null, $path_language = null)
-    {
-        return drupal_get_path_alias($path, $path_language);
-    }
-
-    /**
-     * Given a path alias, return the internal path it represents.
-     *
-     * @param string $path
-     *   A Drupal path alias.
-     * @param string $path_language
-     *   An optional language code to look up the path in.
-     *
-     * @return bool|mixed The internal path represented by the alias, or the original alias if no
-     */
-    public function drupal_get_normal_path($path, $path_language = null)
-    {
-        return drupal_get_normal_path($path, $path_language);
-    }
-
-    /**
-     * Check if the current page is the front page.
-     *
-     * @return bool Boolean value: TRUE if the current page is the front page; false if otherwise.
-     */
-    public function drupal_is_front_page()
-    {
-        return drupal_is_front_page();
-    }
-
-    /**
-     * Check if a path matches any pattern in a set of patterns.
-     *
-     * @param string $path
-     *   The path to match.
-     * @param string $patterns
-     *   String containing a set of patterns separated by \n, \r or \r\n.
-     *
-     * @return bool Boolean value: TRUE if the path matches a pattern, false otherwise.
-     */
-    public function drupal_match_path($path, $patterns)
-    {
-        return drupal_match_path($path, $patterns);
-    }
-
-    /**
      * Return the current URL path of the page being viewed.
      *
      * Examples:
@@ -151,48 +46,6 @@ class Path
     public function current_path()
     {
         return current_path();
-    }
-
-    /**
-     * Rebuild the path alias white list.
-     *
-     * @param string $source
-     *   An optional system path for which an alias is being inserted.
-     *
-     * @return array|null An array containing a white list of path aliases.
-     */
-    public function drupal_path_alias_whitelist_rebuild($source = null)
-    {
-        return drupal_path_alias_whitelist_rebuild($source);
-    }
-
-    /**
-     * Fetches a specific URL alias from the database.
-     *
-     * @param string|array|integer $conditions
-     *   A string representing the source, a number representing the pid, or an
-     *   array of query conditions.
-     *
-     * @return bool false if no alias was found or an associative array containing the
-     */
-    public function path_load($conditions)
-    {
-        return path_load($conditions);
-    }
-
-    /**
-     * Save a path alias to the database.
-     *
-     * @param string $path
-     *   An associative array containing the following keys:
-     *   - source: The internal system path.
-     *   - alias: The URL alias.
-     *   - pid: (optional) Unique path alias identifier.
-     *   - language: (optional) The language of the alias.
-     */
-    public function path_save(&$path)
-    {
-        path_save($path);
     }
 
     /**
@@ -258,14 +111,4 @@ class Path
         return drupal_valid_path($path, $dynamic_allowed);
     }
 
-    /**
-     * Clear the path cache.
-     *
-     * @param string $source
-     *   An optional system path for which an alias is being changed.
-     */
-    public function drupal_clear_path_cache($source = null)
-    {
-        drupal_clear_path_cache($source);
-    }
 }
