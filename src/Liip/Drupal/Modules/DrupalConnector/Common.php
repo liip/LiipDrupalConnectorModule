@@ -15,20 +15,6 @@ namespace Liip\Drupal\Modules\DrupalConnector;
 class Common
 {
     /**
-     * Delivers an "access denied" error to the browser.
-     *
-     * Page callback functions wanting to report an "access denied" message should
-     * return MENU_ACCESS_DENIED instead of calling drupal_access_denied(). However,
-     * functions that are invoked in contexts where that return value might not
-     * bubble up to menu_execute_active_handler() should call
-     * drupal_access_denied().
-     */
-    public function drupal_access_denied()
-    {
-        drupal_access_denied();
-    }
-
-    /**
      * Adds a cascading stylesheet to the stylesheet queue.
      *
      * Calling drupal_static_reset('drupal_add_css') will clear all cascading
@@ -296,26 +282,9 @@ class Common
      *
      * @see drupal_get_js()
      */
-    public function drupal_add_js($data = null, $options = null)
+    public function (drupal_add_js$data = null, $options = null)
     {
         return drupal_add_js($data, $options);
-    }
-
-    /**
-     * Performs end-of-request tasks.
-     *
-     * In some cases page requests need to end without calling drupal_page_footer().
-     * In these cases, call drupal_exit() instead. There should rarely be a reason
-     * to call exit instead of drupal_exit();
-     *
-     * @param $destination
-     *   If this function is called from drupal_goto(), then this argument
-     *   will be a fully-qualified URL that is the destination of the redirect.
-     *   This should be passed along to hook_exit() implementations.
-     */
-    public function drupal_exit($destination = NULL)
-    {
-        drupal_exit($destination);
     }
 
     /**
@@ -346,51 +315,6 @@ class Common
     }
 
     /**
-     * Sends the user to a different Drupal page.
-     *
-     * This issues an on-site HTTP redirect. The function makes sure the redirected
-     * URL is formatted correctly.
-     *
-     * Usually the redirected URL is constructed from this function's input
-     * parameters. However you may override that behavior by setting a
-     * destination in either the $_REQUEST-array (i.e. by using
-     * the query string of an URI) This is used to direct the user back to
-     * the proper page after completing a form. For example, after editing
-     * a post on the 'admin/content'-page or after having logged on using the
-     * 'user login'-block in a sidebar. The function drupal_get_destination()
-     * can be used to help set the destination URL.
-     *
-     * Drupal will ensure that messages set by drupal_set_message() and other
-     * session data are written to the database before the user is redirected.
-     *
-     * This function ends the request; use it instead of a return in your menu
-     * callback.
-     *
-     * @param $path
-     *   A Drupal path or a full URL.
-     * @param $options
-     *   An associative array of additional URL options to pass to url().
-     * @param $http_response_code
-     *   Valid values for an actual "goto" as per RFC 2616 section 10.3 are:
-     *   - 301 Moved Permanently (the recommended value for most redirects)
-     *   - 302 Found (default in Drupal and PHP, sometimes used for spamming search
-     *         engines)
-     *   - 303 See Other
-     *   - 304 Not Modified
-     *   - 305 Use Proxy
-     *   - 307 Temporary Redirect (alternative to "503 Site Down for Maintenance")
-     *   Note: Other values are defined by RFC 2616, but are rarely used and poorly
-     *   supported.
-     *
-     * @see drupal_get_destination()
-     * @see url()
-     */
-    public function drupal_goto($path = '', array $options = array(), $http_response_code = 302)
-    {
-        drupal_goto($path, $options, $http_response_code);
-    }
-
-    /**
      * Converts a PHP variable into its JavaScript equivalent.
      *
      * We use HTML-safe strings, with several characters escaped.
@@ -415,33 +339,6 @@ class Common
     public function drupal_json_decode($var)
     {
         return drupal_json_decode($var);
-    }
-
-    /**
-     * Returns data in JSON format.
-     *
-     * This function should be used for JavaScript callback functions returning
-     * data in JSON format. It sets the header for JavaScript output.
-     *
-     * @param $var
-     *   (optional) If set, the variable will be converted to JSON and output.
-     */
-    public function drupal_json_output($var = NULL)
-    {
-        return drupal_json_output($var);
-    }
-
-    /**
-     * Delivers a "page not found" error to the browser.
-     *
-     * Page callback functions wanting to report a "page not found" message should
-     * return MENU_NOT_FOUND instead of calling drupal_not_found(). However,
-     * functions that are invoked in contexts where that return value might not
-     * bubble up to menu_execute_active_handler() should call drupal_not_found().
-     */
-    public function drupal_not_found()
-    {
-        drupal_not_found();
     }
 
     /**
@@ -723,8 +620,8 @@ class Common
      *                            message should be added by using placeholder strings alongside
      *                            the variables argument to declare the value of the placeholders.
      *                            See t() for documentation on how $message and $variables interact.
-     * @param array   $variables  Array of variables to replace in the message on display or
-     *                            null if message is already translated or not possible to translate.
+     * @param array   $variables  Array of variables to replace in the message on display or NULL       *                            if message is already translated or not possible to translate
+     *
      * @param integer $severity   The severity of the message; one of the following values as defined in
      *
      * @link http://www.faqs.org/rfcs/rfc3164.html RFC 3164: @endlink
@@ -741,7 +638,7 @@ class Common
      *
      * @link http://api.drupal.org/api/drupal/includes!bootstrap.inc/function/watchdog/7
      */
-    public function watchdog($type, $message, $variables = array(), $severity = WATCHDOG_NOTICE, $link = null)
+    public function watchdog($type, $message, $variables = null, $severity = WATCHDOG_NOTICE, $link = null)
     {
         return watchdog($type, $message, $variables, $severity, $link);
     }
