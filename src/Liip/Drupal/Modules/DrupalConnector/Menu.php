@@ -128,22 +128,6 @@ class Menu
     }
 
     /**
-     * Execute the page callback associated with the current path.
-     *
-     * @param $path
-     *   The drupal path whose handler is to be be executed. If set to NULL, then
-     *   the current path is used.
-     * @param $deliver
-     *   (optional) A boolean to indicate whether the content should be sent to the
-     *   browser using the appropriate delivery callback (TRUE) or whether to return
-     *   the result to the caller (FALSE).
-     */
-    public function menu_execute_active_handler($path = NULL, $deliver = TRUE)
-    {
-        return menu_execute_active_handler($path, $deliver);
-    }
-
-    /**
      * Returns path as one string from the argument we are currently at.
      */
     public function menu_tail_to_arg($arg, $map, $index)
@@ -525,14 +509,6 @@ class Menu
     }
 
     /**
-     * Build a list of named menus.
-     */
-    public function menu_get_names()
-    {
-        return menu_get_names();
-    }
-
-    /**
      * Return an array containing the names of system-defined (default) menus.
      */
     public function menu_list_system_menus()
@@ -650,14 +626,6 @@ class Menu
     public function menu_secondary_local_tasks()
     {
         return menu_secondary_local_tasks();
-    }
-
-    /**
-     * Returns the rendered local actions at the current level.
-     */
-    public function menu_local_actions()
-    {
-        return menu_local_actions();
     }
 
     /**
@@ -834,7 +802,7 @@ class Menu
     /**
      * Clears the cached cached data for a single named menu.
      */
-    public function menu_cache_clear($menu_name = 'navigation')
+    public function menu_cache_clear($menu_name = 'tools')
     {
         return menu_cache_clear($menu_name);
     }
@@ -857,25 +825,6 @@ class Menu
     }
 
     /**
-     * (Re)populate the database tables used by various menu functions.
-     *
-     * This function will clear and populate the {menu_router} table, add entries
-     * to {menu_links} for new router items, then remove stale items from
-     * {menu_links}. If called from update.php or install.php, it will also
-     * schedule a call to itself on the first real page load from
-     * menu_execute_active_handler(), because the maintenance page environment
-     * is different and leaves stale data in the menu tables.
-     *
-     * @return
-     *   TRUE if the menu was rebuilt, FALSE if another thread was rebuilding
-     *   in parallel and the current thread just waited for completion.
-     */
-    public function menu_rebuild()
-    {
-        return menu_rebuild();
-    }
-
-    /**
      * Collect and alter the menu definitions.
      */
     public function menu_router_build()
@@ -889,28 +838,6 @@ class Menu
     public function menu_get_router()
     {
         return menu_get_router();
-    }
-
-    /**
-     * Clone an array of menu links.
-     *
-     * @param $links
-     *   An array of menu links to clone.
-     * @param $menu_name
-     *   (optional) The name of a menu that the links will be cloned for. If not
-     *   set, the cloned links will be in the same menu as the original set of
-     *   links that were passed in.
-     *
-     * @return
-     *   An array of menu links with the same properties as the passed-in array,
-     *   but with the link identifiers removed so that a new link will be created
-     *   when any of them is passed in to menu_link_save().
-     *
-     * @see menu_link_save()
-     */
-    public function menu_links_clone($links, $menu_name = NULL)
-    {
-        return menu_links_clone($links, $menu_name);
     }
 
     /**
@@ -1008,21 +935,4 @@ class Menu
         return menu_link_maintain($module, $op, $link_path, $link_title);
     }
 
-    /**
-     * Find the depth of an item's children relative to its depth.
-     *
-     * For example, if the item has a depth of 2, and the maximum of any child in
-     * the menu link tree is 5, the relative depth is 3.
-     *
-     * @param $item
-     *   An array representing a menu link item.
-     *
-     * @return
-     *   The relative depth, or zero.
-     *
-     */
-    public function menu_link_children_relative_depth($item)
-    {
-        return menu_link_children_relative_depth($item);
-    }
 }
