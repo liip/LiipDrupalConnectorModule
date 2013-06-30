@@ -21,67 +21,49 @@ namespace Liip\Drupal\Modules\DrupalConnector;
 class Node
 {
     /**
-     * Determine whether the current user may perform the given operation on the
-     * specified node.
+     * Access callback: Checks a user's permission for performing a node operation.
      *
-     * @param string    $op      The operation to be performed on the node. Possible values are:
-     *                            - "view"
-     *                            - "update"
-     *                            - "delete"
-     *                            - "create"
-     * @param \stdClass $node    The node object on which the operation is to be performed,
-     *                            or node type (e.g. 'forum') for "create" operation.
-     * @param \stdClass $account Optional, a user object representing the user for whom the operation is to be
-     *                            performed. Determines access for a user other than the current user.
+     * @param $op
+     *   The operation to be performed on the node. Possible values are:
+     *   - "view"
+     *   - "update"
+     *   - "delete"
+     *   - "create"
+     * @param Drupal\Core\Entity\EntityInterface|string|stdClass $node
+     *   The node entity on which the operation is to be performed, or the node type
+     *   object, or node type string (e.g., 'forum') for the 'create' operation.
+     * @param $account
+     *   (optional) A user object representing the user for whom the operation is to
+     *   be performed. Determines access for a user other than the current user.
+     *   Defaults to NULL.
+     * @param $langcode
+     *   (optional) Language code for the variant of the node. Different language
+     *   variants might have different permissions associated. If NULL, the
+     *   original langcode of the node is used. Defaults to NULL.
      *
-     * @return boolean TRUE if the operation may be performed, FALSE otherwise.
+     * @return
+     *   TRUE if the operation may be performed, FALSE otherwise.
      *
-     * @link http://api.drupal.org/api/drupal/modules!node!node.module/function/node_access/7
+     * @see node_menu()
      */
-    public function node_access($op, $node, $account = null)
+    public function node_access($op, $node, $account = NULL, $langcode = NULL)
     {
         return node_access($op, $node, $account);
     }
 
     /**
-     * Delete a node.
+     * Loads a node entity from the database.
      *
-     * @param integer $nid A node ID.
+     * @param int $nid
+     *   The node ID.
+     * @param bool $reset
+     *   (optional) Whether to reset the node_load_multiple() cache. Defaults to
+     *   FALSE.
      *
-     * @link http://api.drupal.org/api/drupal/modules!node!node.module/function/node_delete/7
+     * @return Drupal\node\Node|false
+     *   A fully-populated node entity, or FALSE if the node is not found.
      */
-    public function node_delete($nid)
-    {
-        node_delete($nid);
-    }
-
-    /**
-     * Retrieves the timestamp at which the current user last viewed the
-     * specified node.
-     *
-     * @param integer $nid The node ID.
-     *
-     * @return \stdClass
-     *
-     * @link http://api.drupal.org/api/drupal/modules!node!node.module/function/node_last_viewed/7
-     */
-    public function node_last_viewed($nid)
-    {
-        return node_last_viewed($nid);
-    }
-
-    /**
-     * Load a node object from the database.
-     *
-     * @param integer $nid   The node ID.
-     * @param integer $vid   The revision ID.
-     * @param boolean $reset Whether to reset the node_load_multiple cache.
-     *
-     * @return \stdClass|false A fully-populated node object, or FALSE if the node is not found.
-     *
-     * @link http://api.drupal.org/api/drupal/modules!node!node.module/function/node_load/7
-     */
-    public function node_load($nid = null, $vid = null, $reset = false)
+    public function node_load($nid = NULL, $reset = FALSE)
     {
         return node_load($nid, $vid, $reset);
     }
@@ -99,39 +81,6 @@ class Node
     public function node_mark($nid, $timestamp)
     {
         return node_mark($nid, $timestamp);
-    }
-
-    /**
-     * Save changes to a node or add a new node.
-     *
-     * @param \stdClass &$node The $node object to be saved. If $node->nid is omitted (or $node->is_new is TRUE), a new node will be added.
-     *
-     * @throws \Liip\Drupal\Modules\DrupalConnector\NodeException in case the node could not be persisted.
-     *
-     * @link http://api.drupal.org/api/drupal/modules!node!node.module/function/node_save/7
-     */
-    public function node_save(&$node)
-    {
-        try {
-            node_save($node);
-        } catch (\Exception $e) {
-            throw new NodeException(
-                sprintf(NodeException::FailedToSaveNodeText, $node->nid),
-                NodeException::FailedToSaveNode
-            );
-        }
-    }
-
-    /**
-     * Update the 'last viewed' timestamp of the specified node for current user.
-     *
-     * @param \stdClass $node A node object.
-     *
-     * @link http://api.drupal.org/api/drupal/modules!node!node.module/function/node_tag_new/7
-     */
-    public function node_tag_new($node)
-    {
-        node_tag_new($node);
     }
 
     /**
@@ -153,19 +102,21 @@ class Node
     }
 
     /**
-     * Generate an array for rendering the given node.
+     * Generates an array for rendering the given node.
      *
-     * @param \stdClass $node     A node object.
-     * @param string    $viewMode View mode, e.g. 'full', 'teaser'...
-     * @param string    $langCode (optional) A language code to use for rendering. Defaults to the global content
-     *                            language of the current request.
+     * @param \Drupal\Core\Entity\EntityInterface $node
+     *   A node entity.
+     * @param $view_mode
+     *   (optional) View mode, e.g., 'full', 'teaser'... Defaults to 'full.'
+     * @param $langcode
+     *   (optional) A language code to use for rendering. Defaults to NULL which is
+     *   the global content language of the current request.
      *
-     * @return array An array as expected by drupal_render().
-     *
-     * @link http://api.drupal.org/api/drupal/modules!node!node.module/function/node_view/7
+     * @return
+     *   An array as expected by drupal_render().
      */
-    public function node_view($node, $viewMode = 'full', $langCode = null)
+    function node_view(EntityInterface $node, $view_mode = 'full', $langcode = NULL)
     {
-        return node_view($node, $viewMode, $langCode);
+        return node_view($node, $view_mode, $langcode);
     }
 }
