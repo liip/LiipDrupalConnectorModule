@@ -20,71 +20,45 @@ namespace Liip\Drupal\Modules\DrupalConnector;
 class Cache
 {
     /**
-     * Provides the value of the cache identified by it's key.
+     * Instantiates and statically caches the correct class for a cache bin.
      *
-     * @param string $key Identifier of the cached data
-     * @param string $bin [Optional] Name of the container the data shall be retrieved from.
+     * By default, this returns an instance of the Drupal\Core\Cache\DatabaseBackend
+     * class.
      *
-     * @return mixed
+     * Classes implementing Drupal\Core\Cache\CacheBackendInterface can register
+     * themselves both as a default implementation and for specific bins.
+     *
+     * @param $bin
+     *   The cache bin for which the cache object should be returned, defaults to
+     *   'cache'.
+     *
+     * @return Drupal\Core\Cache\CacheBackendInterface
+     *   The cache object associated with the specified bin.
+     *
+     * @see Drupal\Core\Cache\CacheBackendInterface
      */
-    public function cache_get($key, $bin = 'cache')
-    {
-        return cache_get($key, $table);
+    function cache($bin = 'cache') {
+        return cache($bin);
     }
 
     /**
-     * Returns data from the persistent cache when given an array of cache IDs.
+     * Marks cache items from all bins with any of the specified tags as invalid.
      *
-     * @param array  &$cids An array of cache IDs for the data to retrieve.
-     * @param string $bin   The cache bin where the data is stored.
+     * Many sites have more than one active cache backend, and each backend my use
+     * a different strategy for storing tags against cache items, and invalidating
+     * cache items associated with a given tag.
      *
-     * @return array An array of the items successfully returned from cache indexed by cid.
+     * When invalidating a given list of tags, we iterate over each cache backend,
+     * and call invalidateTags() on each.
+     *
+     * @param array $tags
+     *   The list of tags to invalidate cache items for.
+     *
+     * @deprecated 8.x
+     *   Use \Drupal\Core\Cache\Cache::invalidateTags().
      */
-    public function cache_get_multiple(array &$cids, $bin = 'cache')
-    {
-        return cache_get_multiple($cids, $bin);
+    function cache_invalidate_tags(array $tags) {
+        cache_invalidate_tags($tags);
     }
-
-    /**
-     * Persists the given data in to the cache.
-     *
-     * @param string       $cid    The cache ID of the data to store.
-     * @param array|string $data   The data to store in the cache. Complex data types will be automatically
-     *                              serialized before insertion.
-     * @param string       $bin    [Optional] Name of the container the data shall be stored in.
-     * @param integer      $expire [Optional] Defines how long the data shall be stored.
-     *
-     * @return mixed
-     */
-    public function cache_set($cid, $data, $bin = 'cache', $expire = CACHE_PERMANENT)
-    {
-        return cache_set($cid, $data, $bin, $expire);
-    }
-
-    /**
-     * Expires data from the cache.
-     *
-     * @param null $cid      [Optional] Identifier of the data to be deleted.
-     * @param null $bin      [Optional] Name of the container the data shall be stored in.
-     * @param bool $wildcard [Optional] If »true«, every data identified by a key starting with the declared $cid
-     *                        will be deleted
-     *
-     * @return mixed
-     */
-    public function cache_clear_all($cid = null, $bin = null, $wildcard = false)
-    {
-        return cache_clear_all($cid, $bin, $wildcard);
-    }
-
-    /**
-     * Determines, if a cache container is empty.
-     *
-     * @param string $bin Name of the container check to be empty.
-     *
-     * @return boolean »true«, if the cache bin specified is empty.
-     */
-    public function cache_is_empty($bin)
-    {
-        return cache_is_empty($bin);
-    }
+    
 }
