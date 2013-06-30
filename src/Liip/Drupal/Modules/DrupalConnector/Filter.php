@@ -68,36 +68,6 @@ class Filter
     }
 
     /**
-     * Save a text format object to the database.
-     *
-     * @param $format
-     *   A format object using the properties:
-     *   - 'format': A machine-readable name representing the ID of the text format
-     *     to save. If this corresponds to an existing text format, that format
-     *     will be updated; otherwise, a new format will be created.
-     *   - 'name': The title of the text format.
-     *   - 'status': (optional) An integer indicating whether the text format is
-     *     enabled (1) or not (0). Defaults to 1.
-     *   - 'weight': (optional) The weight of the text format, which controls its
-     *     placement in text format lists. If omitted, the weight is set to 0.
-     *   - 'filters': (optional) An associative, multi-dimensional array of filters
-     *     assigned to the text format, keyed by the name of each filter and using
-     *     the properties:
-     *     - 'weight': (optional) The weight of the filter in the text format. If
-     *       omitted, either the currently stored weight is retained (if there is
-     *       one), or the filter is assigned a weight of 10, which will usually
-     *       put it at the bottom of the list.
-     *     - 'status': (optional) A boolean indicating whether the filter is
-     *       enabled in the text format. If omitted, the filter will be disabled.
-     *     - 'settings': (optional) An array of configured settings for the filter.
-     *       See hook_filter_info() for details.
-     */
-    public function filter_format_save($format)
-    {
-        return filter_format_save($format);
-    }
-
-    /**
      * Disable a text format.
      *
      * There is no core facility to re-enable a disabled format. It is not deleted
@@ -129,14 +99,6 @@ class Filter
     public function filter_format_exists($format_id)
     {
         return filter_format_exists($format_id);
-    }
-
-    /**
-     * Display a text format form title.
-     */
-    public function filter_admin_format_title($format)
-    {
-        return filter_admin_format_title($format);
     }
 
     /**
@@ -236,22 +198,6 @@ class Filter
     public function filter_fallback_format()
     {
         return filter_fallback_format();
-    }
-
-    /**
-     * Returns the title of the fallback text format.
-     */
-    public function filter_fallback_format_title()
-    {
-        return filter_fallback_format_title();
-    }
-
-    /**
-     * Return a list of all filters provided by modules.
-     */
-    public function filter_get_filters()
-    {
-        return filter_get_filters();
     }
 
     /**
@@ -462,16 +408,6 @@ class Filter
     public function filter_dom_serialize_escape_cdata_element($dom_document, $dom_element, $comment_start = '//', $comment_end = '')
     {
         return filter_dom_serialize_escape_cdata_element($dom_document, $dom_element, $comment_start, $comment_end);
-    }
-
-    /**
-     * Returns HTML for a link to the more extensive filter tips.
-     *
-     * @ingroup themeable
-     */
-    public function theme_filter_tips_more_info()
-    {
-        return theme_filter_tips_more_info();
     }
 
     /**
