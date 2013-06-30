@@ -100,7 +100,7 @@ class Bootstrap
      * @see drupal_get_messages()
      * @see theme_status_messages()
      */
-    public function drupal_set_message($message = null, $type = 'status', $repeat = true)
+    public function drupal_set_message($message = null, $type = 'status', $repeat = false)
     {
         return drupal_set_message($message, $type, $repeat);
     }
@@ -223,37 +223,6 @@ class Bootstrap
     }
 
     /**
-     * Unserializes and appends elements from a serialized string.
-     *
-     * @param $obj
-     *   The object to which the elements are appended.
-     * @param $field
-     *   The attribute of $obj whose value should be unserialized.
-     *
-     * @return \stdClass
-     */
-    public function drupal_unpack($obj, $field = 'data')
-    {
-        return drupal_unpack($obj, $field);
-    }
-
-    /**
-     * Returns the IP address of the client machine.
-     *
-     * If Drupal is behind a reverse proxy, we use the X-Forwarded-For header
-     * instead of $_SERVER['REMOTE_ADDR'], which would be the IP address of
-     * the proxy server, and not the client's. The actual header name can be
-     * configured by the reverse_proxy_header variable.
-     * @return string
-     *   IP address of client machine, adjusted for reverse proxy and/or cluster
-     *   environments.
-     */
-    public function ip_address()
-    {
-        return ip_address();
-    }
-
-    /**
      * Returns the requested URL path of the page being viewed.
      *
      * Examples:
@@ -271,16 +240,5 @@ class Bootstrap
     public function request_path()
     {
         return request_path();
-    }
-
-    /**
-     * Rescans all enabled modules and rebuilds the registry.
-     *
-     * Rescans all code in modules or includes directories, storing the location of
-     * each interface or class in the database.
-     */
-    public function registry_rebuild()
-    {
-        registry_rebuild();
     }
 }
