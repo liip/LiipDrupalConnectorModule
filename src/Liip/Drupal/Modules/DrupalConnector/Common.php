@@ -282,7 +282,7 @@ class Common
      *
      * @see drupal_get_js()
      */
-    public function (drupal_add_js$data = null, $options = null)
+    public function drupal_add_js($data = null, $options = null)
     {
         return drupal_add_js($data, $options);
     }
