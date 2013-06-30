@@ -49,17 +49,6 @@ class Path
     }
 
     /**
-     * Delete a URL alias.
-     *
-     * @param array|integer $criteria
-     *   A number representing the pid or an array of criteria.
-     */
-    public function path_delete($criteria)
-    {
-        path_delete($criteria);
-    }
-
-    /**
      * Determines whether a path is in the administrative section of the site.
      *
      * By default, paths are considered to be non-administrative. If a path does
