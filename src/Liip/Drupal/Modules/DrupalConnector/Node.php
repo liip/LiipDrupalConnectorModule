@@ -153,6 +153,17 @@ class Node
     }
 
     /**
+     * Prepares a manually created node and adds drupal specific properties to it (uid, status etc.)
+     *
+     * @param $node \stdClass   The $node object which will have the properties added to it
+     * @return void
+     */
+    public function node_object_prepare(\stdClass $node)
+    {
+        node_object_prepare($node);
+    }
+
+    /**
      * Generate an array for rendering the given node.
      *
      * @param \stdClass $node     A node object.

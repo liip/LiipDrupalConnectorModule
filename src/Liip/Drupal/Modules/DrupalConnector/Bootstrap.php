@@ -283,4 +283,17 @@ class Bootstrap
     {
         registry_rebuild();
     }
+
+    /**
+     * Returns a list of installed languages, indexed by the specified key.
+     *
+     * @param string $field
+     *   The field to index the list with
+     * @return array
+     *   The associative array with all the languages installed
+     */
+    public function language_list($field = 'language')
+    {
+        return language_list($field);
+    }
 }
