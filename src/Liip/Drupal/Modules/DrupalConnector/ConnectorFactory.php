@@ -23,6 +23,11 @@ use Liip\Drupal\Modules\DrupalConnector\Node\Revision;
 class ConnectorFactory
 {
     /**
+    * @var Bootstrap
+    */
+    protected static $bootstrapConnector;
+  
+    /**
      * @var Cache
      */
     protected static $cacheConnector;
@@ -36,6 +41,16 @@ class ConnectorFactory
      * @var Database
      */
     protected static $databaseConnector;
+    
+    /**
+     * @var Filter
+     */
+    protected static $filterConnector;
+    
+    /**
+     * @var Form
+     */
+    protected static $formConnector;
 
     /**
      * @var Module
@@ -46,42 +61,26 @@ class ConnectorFactory
      * @var Node
      */
     protected static $nodeConnector;
+    
+    /**
+     * @var Path
+     */
+    protected static $pathConnector;
 
     /**
      * @var Revision
      */
     protected static $nodeRevisionConnector;
-
-    /**
-     * @var User
-     */
-    protected static $userConnector;
-
-    /**
-     * @var Bootstrap
-     */
-    protected static $bootstrapConnector;
-
-    /**
-     * @var Filter
-     */
-    protected static $filterConnector;
-
+    
     /**
      * @var Theme
      */
     protected static $themeConnector;
 
     /**
-     * @var Form
+     * @var User
      */
-    protected static $formConnector;
-
-    /**
-     * @var Path
-     */
-    protected static $pathConnector;
-
+    protected static $userConnector;
 
     /**
      * Provides an instance of the Cache object
