@@ -296,4 +296,17 @@ class Bootstrap
     {
         return language_list($field);
     }
+    
+    /**
+     * Returns the default language used on the site
+     *
+     * @param $property
+     *   Optional property of the language object to return
+     * @return mixed (stdClass | string)
+     *   If property is null the full language object is returned as stdClass
+     *   If property is set, the return value is a string
+     */
+    public function language_default($property = NULL) {
+        return language_default($property);
+    }
 }
