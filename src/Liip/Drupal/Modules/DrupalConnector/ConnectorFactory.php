@@ -51,6 +51,11 @@ class ConnectorFactory
      * @var Form
      */
     protected static $formConnector;
+    
+    /**
+     * @var Menu
+     */
+    protected static $menuConnector;
 
     /**
      * @var Module
@@ -127,6 +132,21 @@ class ConnectorFactory
         return self::$databaseConnector;
     }
 
+    /**
+     * Provides an instance of the Menu object
+     *
+     * @static
+     * @return Menu
+     */
+    public static function getMenuConnector()
+    {
+        if (is_null(self::$menuConnector)) {
+            self::$menuConnector = new Menu();
+        }
+
+        return self::$menuConnector;
+    }
+    
     /**
      * Provides an instance of the Module object
      *
