@@ -365,7 +365,7 @@ class Menu
      */
     public function menu_tree_collect_node_links(&$tree, &$node_links)
     {
-        return menu_tree_collect_node_links(&$tree, &$node_links);
+        return menu_tree_collect_node_links($tree, $node_links);
     }
 
     /**
@@ -379,7 +379,7 @@ class Menu
      */
     public function menu_tree_check_access(&$tree, $node_links = array())
     {
-        return menu_tree_check_access(&$tree, $node_links);
+        return menu_tree_check_access($tree, $node_links);
     }
 
     /**
@@ -418,7 +418,7 @@ class Menu
      */
     public function template_preprocess_menu_tree(&$variables)
     {
-        return template_preprocess_menu_tree(&$variables);
+        return template_preprocess_menu_tree($variables);
     }
 
     /**
@@ -683,7 +683,7 @@ class Menu
      */
     public function theme_menu_local_tasks(&$variables)
     {
-        return theme_menu_local_tasks(&$variables);
+        return theme_menu_local_tasks($variables);
     }
 
     /**
@@ -984,7 +984,7 @@ class Menu
      */
     public function menu_link_save(&$item, $existing_item = array(), $parent_candidates = array())
     {
-        return menu_link_save(&$item, $existing_item, $parent_candidates);
+        return menu_link_save($item, $existing_item, $parent_candidates);
     }
 
     /**
