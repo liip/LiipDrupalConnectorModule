@@ -1,5 +1,9 @@
 {
-    "hash": "c6489fa509365588217d5fbb99192428",
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
+    ],
+    "hash": "c1f5e5222611185bedd592d0c02e5c1d",
     "packages": [
         {
             "name": "composer/installers",
@@ -11,7 +15,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/composer/installers/zipball/v1.0.0",
+                "url": "https://github.com/composer/installers/archive/v1.0.0.zip",
                 "reference": "v1.0.0",
                 "shasum": ""
             },
@@ -21,17 +25,16 @@
             "require-dev": {
                 "composer/composer": "1.0.*@dev"
             },
-            "time": "2012-09-07 21:17:33",
             "type": "composer-installer",
             "extra": {
                 "class": "Composer\\Installers\\Installer"
             },
-            "installation-source": "dist",
             "autoload": {
                 "psr-0": {
                     "Composer\\Installers\\": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -46,24 +49,25 @@
             "description": "A multi-framework Composer library installer",
             "homepage": "http://composer.github.com/installers/",
             "keywords": [
-                "symfony",
-                "installer",
-                "zend",
-                "wordpress",
                 "cakephp",
                 "codeigniter",
-                "fuelphp",
                 "drupal",
-                "lithium",
-                "li3",
+                "fuelphp",
+                "installer",
                 "joomla",
+                "kohana",
                 "laravel",
+                "li3",
+                "lithium",
+                "mako",
                 "phpbb",
                 "ppi",
                 "silverstripe",
-                "kohana",
-                "mako"
-            ]
+                "symfony",
+                "wordpress",
+                "zend"
+            ],
+            "time": "2012-09-08 04:17:33"
         }
     ],
     "packages-dev": [
@@ -74,6 +78,12 @@
     ],
     "minimum-stability": "dev",
     "stability-flags": [
+
+    ],
+    "platform": {
+        "php": ">=5.3"
+    },
+    "platform-dev": [
 
     ]
 }

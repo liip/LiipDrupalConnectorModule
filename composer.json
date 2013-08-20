@@ -28,7 +28,7 @@
     "repositories": [],
 
     "require": {
-       "php": ">=5.3,<5.4",
+       "php": ">=5.3",
        "composer/installers": "v1.0.0"
     }
 }
