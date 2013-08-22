@@ -3,3 +3,4 @@ description = An abstraction layer between the procedural world of Drupal and OO
 package = Liip Drupal Modules
 core = 7.x
 php = 5.3
+version = 7.x-1.x

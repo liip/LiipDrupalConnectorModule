@@ -15,7 +15,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/composer/installers/archive/v1.0.0.zip",
+                "url": "https://github.com/composer/installers/zipball/v1.0.0",
                 "reference": "v1.0.0",
                 "shasum": ""
             },
@@ -34,7 +34,6 @@
                     "Composer\\Installers\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -67,7 +66,7 @@
                 "wordpress",
                 "zend"
             ],
-            "time": "2012-09-08 04:17:33"
+            "time": "2012-09-07 21:17:33"
         }
     ],
     "packages-dev": [
