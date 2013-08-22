@@ -1,8 +1,9 @@
 <?php
 /**
- * This module file is required by Drupal to act as entry point to the current module.
+ * @file
+ *   This module file is required by Drupal to act as entry point to the current module.
  *
  * @author     Bastian Feder <drupal@bastian-feder.de>
  * @license    http://www.opensource.org/licenses/mit-license.php The MIT License
- * @copyright  Copyright (c) 2012 liip ag
+ * @copyright  Copyright (c) 2013/2014 Liip AG
  */

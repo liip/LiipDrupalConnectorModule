@@ -8,6 +8,10 @@
 
     "authors": [
         {
+            "name": "Liip AG",
+            "homepage": "http://liip.ch"
+        },
+        {
             "name": "Bastian Feder",
             "email": "bastian.feder@liip.ch",
             "role": "maintainer"
