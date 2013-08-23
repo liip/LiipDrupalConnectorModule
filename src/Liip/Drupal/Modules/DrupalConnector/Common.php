@@ -346,6 +346,39 @@ class Common
     }
 
     /**
+     * Splits a URL-encoded query string into an array.
+     *
+     * @param $query
+     *   The query string to split.
+     *
+     * @return
+     *   An array of URL decoded couples $param_name => $value.
+     */
+    public function drupal_get_query_array($query)
+    {
+        return drupal_get_query_array($query);
+    }
+
+    /**
+     * Processes a URL query parameter array to remove unwanted elements.
+     *
+     * @param $query
+     *   (optional) An array to be processed. Defaults to $_GET.
+     * @param $exclude
+     *   (optional) A list of $query array keys to remove. Use "parent[child]" to
+     *   exclude nested items. Defaults to array('q').
+     * @param $parent
+     *   Internal use only. Used to build the $query array key for nested items.
+     *
+     * @return
+     *   An array containing query parameters, which can be used for url().
+     */
+    public function drupal_get_query_parameters(array $query = NULL, array $exclude = array('q'), $parent = '')
+    {
+        rerturn drupal_get_query_parameters($query, $exclude, $parent);
+    }
+
+    /**
      * Sends the user to a different Drupal page.
      *
      * This issues an on-site HTTP redirect. The function makes sure the redirected
@@ -388,6 +421,73 @@ class Common
     public function drupal_goto($path = '', array $options = array(), $http_response_code = 302)
     {
         drupal_goto($path, $options, $http_response_code);
+    }
+
+    /**
+     * Parses an array into a valid, rawurlencoded query string.
+     *
+     * This differs from http_build_query() as we need to rawurlencode() (instead of
+     * urlencode()) all query parameters.
+     *
+     * @param $query
+     *   The query parameter array to be processed, e.g. $_GET.
+     * @param $parent
+     *   Internal use only. Used to build the $query array key for nested items.
+     *
+     * @return
+     *   A rawurlencoded string which can be used as or appended to the URL query
+     *   string.
+     *
+     * @see drupal_get_query_parameters()
+     * @ingroup php_wrappers
+     */
+    public function drupal_http_build_query(array $query, $parent = '')
+    {
+        return drupal_http_build_query($query, $parent);
+    }
+
+    /**
+     * Performs an HTTP request.
+     *
+     * This is a flexible and powerful HTTP client implementation. Correctly
+     * handles GET, POST, PUT or any other HTTP requests. Handles redirects.
+     *
+     * @param $url
+     *   A string containing a fully qualified URI.
+     * @param array $options
+     *   (optional) An array that can have one or more of the following elements:
+     *   - headers: An array containing request headers to send as name/value pairs.
+     *   - method: A string containing the request method. Defaults to 'GET'.
+     *   - data: A string containing the request body, formatted as
+     *     'param=value&param=value&...'. Defaults to NULL.
+     *   - max_redirects: An integer representing how many times a redirect
+     *     may be followed. Defaults to 3.
+     *   - timeout: A float representing the maximum number of seconds the function
+     *     call may take. The default is 30 seconds. If a timeout occurs, the error
+     *     code is set to the HTTP_REQUEST_TIMEOUT constant.
+     *   - context: A context resource created with stream_context_create().
+     *
+     * @return object
+     *   An object that can have one or more of the following components:
+     *   - request: A string containing the request body that was sent.
+     *   - code: An integer containing the response status code, or the error code
+     *     if an error occurred.
+     *   - protocol: The response protocol (e.g. HTTP/1.1 or HTTP/1.0).
+     *   - status_message: The status message from the response, if a response was
+     *     received.
+     *   - redirect_code: If redirected, an integer containing the initial response
+     *     status code.
+     *   - redirect_url: If redirected, a string containing the URL of the redirect
+     *     target.
+     *   - error: If an error occurred, the error message. Otherwise not set.
+     *   - headers: An array containing the response headers as name/value pairs.
+     *     HTTP header names are case-insensitive (RFC 2616, section 4.2), so for
+     *     easy access the array keys are returned in lower case.
+     *   - data: A string containing the response body that was received.
+     */
+    public function drupal_http_request($url, array $options = array())
+    {
+        return drupal_http_request($url, $options);
     }
 
     /**
