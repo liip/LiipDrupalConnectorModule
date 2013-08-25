@@ -375,7 +375,7 @@ class Common
      */
     public function drupal_get_query_parameters(array $query = NULL, array $exclude = array('q'), $parent = '')
     {
-        rerturn drupal_get_query_parameters($query, $exclude, $parent);
+        return drupal_get_query_parameters($query, $exclude, $parent);
     }
 
     /**
