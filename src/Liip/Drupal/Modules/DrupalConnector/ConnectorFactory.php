@@ -26,7 +26,7 @@ class ConnectorFactory
     * @var Bootstrap
     */
     protected static $bootstrapConnector;
-  
+
     /**
      * @var Cache
      */
@@ -41,17 +41,22 @@ class ConnectorFactory
      * @var Database
      */
     protected static $databaseConnector;
-    
+
+    /**
+     * @var File
+     */
+    protected static $fileConnector;
+
     /**
      * @var Filter
      */
     protected static $filterConnector;
-    
+
     /**
      * @var Form
      */
     protected static $formConnector;
-    
+
     /**
      * @var Menu
      */
@@ -66,7 +71,7 @@ class ConnectorFactory
      * @var Node
      */
     protected static $nodeConnector;
-    
+
     /**
      * @var Path
      */
@@ -76,7 +81,7 @@ class ConnectorFactory
      * @var Revision
      */
     protected static $nodeRevisionConnector;
-    
+
     /**
      * @var Theme
      */
@@ -146,7 +151,7 @@ class ConnectorFactory
 
         return self::$menuConnector;
     }
-    
+
     /**
      * Provides an instance of the Module object
      *
@@ -280,5 +285,20 @@ class ConnectorFactory
         }
 
         return self::$pathConnector;
+    }
+
+    /**
+     * Provides an instance of the File object
+     *
+     * @static
+     * @return File
+     */
+    public static function getFileConnector()
+    {
+        if (is_null(self::$fileConnector)) {
+            self::$fileConnector = new File();
+        }
+
+        return self::$fileConnector;
     }
 }
