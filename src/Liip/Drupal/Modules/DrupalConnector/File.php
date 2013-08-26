@@ -134,4 +134,46 @@ class File
         return file_save_data($data, $destination, $replace);
     }
 
+    /**
+     * Deletes a file.
+     *
+     * PHP's unlink() is broken on Windows, as it can fail to remove a file
+     * when it has a read-only flag set.
+     *
+     * @param $uri
+     *   A URI or pathname.
+     * @param $context
+     *   Refer to http://php.net/manual/en/ref.stream.php
+     *
+     * @return
+     *   Boolean TRUE on success, or FALSE on failure.
+     *
+     * @see unlink()
+     * @ingroup php_wrappers
+     */
+    function drupal_unlink($uri, $context = NULL) {
+        return drupal_unlink($uri, $context);
+    }
+
+    /**
+     * Removes a directory.
+     *
+     * PHP's rmdir() is broken on Windows, as it can fail to remove a directory
+     * when it has a read-only flag set.
+     *
+     * @param $uri
+     *   A URI or pathname.
+     * @param $context
+     *   Refer to http://php.net/manual/en/ref.stream.php
+     *
+     * @return
+     *   Boolean TRUE on success, or FALSE on failure.
+     *
+     * @see rmdir()
+     * @ingroup php_wrappers
+     */
+    function drupal_rmdir($uri, $context = NULL) {
+        return drupal_rmdir($uri, $context);
+    }
+
 }
