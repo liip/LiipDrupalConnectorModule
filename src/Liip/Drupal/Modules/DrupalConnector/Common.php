@@ -845,4 +845,18 @@ class Common
     {
         return watchdog($type, $message, $variables, $severity, $link);
     }
+
+    /**
+     * Returns the base URL path (i.e., directory) of the Drupal installation.
+     *
+     * base_path() adds a "/" to the beginning and end of the returned path if the
+     * path is not empty. At the very least, this will return "/".
+     *
+     * Examples:
+     * - http://example.com returns "/" because the path is empty.
+     * - http://example.com/drupal/folder returns "/drupal/folder/".
+     */
+    function base_path() {
+        return base_path();
+    }
 }

@@ -179,4 +179,38 @@ class Node
     {
         return node_view($node, $viewMode, $langCode);
     }
+
+    /**
+     * Updates the database cache of node types.
+     *
+     * All new module-defined node types are saved to the database via a call to
+     * node_type_save(), and obsolete ones are deleted via a call to
+     * node_type_delete(). See _node_types_build() for an explanation of the new
+     * and obsolete types.
+     *
+     * @see _node_types_build()
+     */
+    function node_types_rebuild() {
+        node_types_rebuild();
+    }
+
+    /**
+     * Deletes multiple nodes.
+     *
+     * @param $nids
+     *   An array of node IDs.
+     */
+    function node_delete_multiple($nids) {
+        node_delete_multiple($nids);
+    }
+
+    /**
+     * Deletes a node type from the database.
+     *
+     * @param $type
+     *   The machine-readable name of the node type to be deleted.
+     */
+    function node_type_delete($type) {
+        node_type_delete($type);
+    }
 }
