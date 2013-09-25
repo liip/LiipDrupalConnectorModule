@@ -859,4 +859,17 @@ class Common
     function base_path() {
         return base_path();
     }
+
+    /**
+     * Provides the base url of the current loaded site.
+     *
+     * @return string
+     *
+     * @link https://api.drupal.org/api/drupal/developer!globals.php/global/base_url/7
+     */ 
+    public function base_url()
+    {
+        global $base_url;
+        return $base_url;
+    }
 }
