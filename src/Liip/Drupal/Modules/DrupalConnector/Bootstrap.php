@@ -309,4 +309,23 @@ class Bootstrap
     public function language_default($property = NULL) {
         return language_default($property);
     }
+
+    /**
+     * Sets an HTTP response header for the current page.
+     *
+     * Note: When sending a Content-Type header, always include a 'charset' type,
+     * too. This is necessary to avoid security bugs (e.g. UTF-7 XSS).
+     *
+     * @param $name
+     *   The HTTP header name, or the special 'Status' header name.
+     * @param $value
+     *   The HTTP header value; if equal to FALSE, the specified header is unset.
+     *   If $name is 'Status', this is expected to be a status code followed by a
+     *   reason phrase, e.g. "404 Not Found".
+     * @param $append
+     *   Whether to append the value to an existing header or to replace it.
+     */
+    public function drupal_add_http_header($name, $value, $append = FALSE) {
+        drupal_add_http_header($name, $value, $append);
+    }
 }
