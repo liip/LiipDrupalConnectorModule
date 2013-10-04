@@ -872,4 +872,18 @@ class Common
         global $base_url;
         return $base_url;
     }
+
+    /**
+     * Returns the global $language variable
+     *
+     * @return object
+     *
+     * @link https://api.drupal.org/api/drupal/developer!globals.php/global/language/7
+     */
+    public function language()
+    {
+        global $language;
+
+        return $language;
+    }
 }
