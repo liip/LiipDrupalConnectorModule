@@ -220,4 +220,17 @@ class Node
     function node_content_form($node, $form_state) {
         return node_content_form($node, $form_state);
     }
+
+    /**
+     * Prepares node for saving by populating author and creation date.
+     *
+     * @param $node
+     *   A node object.
+     *
+     * @return
+     *   An updated node object.
+     */
+    function node_submit($node) {
+        return node_submit($node);
+    }
 }
