@@ -20,6 +20,10 @@
             "name": "Daniel Barsotti",
             "email": "daniel.barsotti@liip.ch",
             "role": "maintainer"
+        },
+        {
+            "name": "List of Contributors",
+            "homepage": "https://github.com/liip/LiipDrupalConnectorModule/graphs/contributors"
         }
     ],
 
