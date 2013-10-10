@@ -213,4 +213,11 @@ class Node
     function node_type_delete($type) {
         node_type_delete($type);
     }
+
+    /**
+     * Implements hook_form().
+     */
+    function node_content_form($node, $form_state) {
+        return node_content_form($node, $form_state);
+    }
 }
