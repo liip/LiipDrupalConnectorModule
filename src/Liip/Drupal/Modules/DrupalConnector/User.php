@@ -92,6 +92,22 @@ class User
     }
 
     /**
+     * Fetch a user object by email address.
+     *
+     * @param string $mail String with the account's e-mail address.
+     *
+     * @return \srdClass|FALSE
+     *   A fully-loaded $user object upon successful user load or FALSE if user
+     *   cannot be loaded.
+     *
+     * @see user_load_multiple()
+     */
+    function user_load_by_mail($mail)
+    {
+        return user_load_by_mail($mail);
+    }
+
+    /**
      * Generate a random alphanumeric password.
      *
      * @param int $length Amount of characters the generated password shall have.
@@ -144,6 +160,8 @@ class User
      * @param string    $category [Optional] The category for storing profile information in.
      *
      * @return \stdClass|false  A fully-loaded $user object upon successful save or FALSE if the save failed.
+     *
+     * @throws \Exception in case of an error
      */
     public function user_save(\stdClass $account, array $array = array(), $category = 'account')
     {
@@ -153,11 +171,12 @@ class User
     /**
      * Return the global user object
      * TODO: this does not wrap a function of the user module, find out if this function belongs here.
-     * @return stdClass
+     * @return \stdClass
      */
     public function current_user()
     {
         global $user;
+
         return $user;
     }
 
