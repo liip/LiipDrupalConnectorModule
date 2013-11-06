@@ -149,7 +149,7 @@ class Module
         return module_exists($module);
     }
 
-    
+
     /**
      * Determines whether a module implements a hook.
      *
@@ -238,5 +238,37 @@ class Module
     public function module_implements($hook, $sort = false, $reset = false)
     {
         return module_implements($hook, $sort, $reset);
+    }
+
+    /**
+     * Loads a module include file.
+     *
+     * Examples:
+     * @code
+     *   // Load node.admin.inc from the node module.
+     *   module_load_include('inc', 'node', 'node.admin');
+     *   // Load content_types.inc from the node module.
+     *   module_load_include('inc', 'node', 'content_types');
+     * @endcode
+     *
+     * Do not use this function to load an install file, use module_load_install()
+     * instead. Do not use this function in a global context since it requires
+     * Drupal to be fully bootstrapped, use require_once DRUPAL_ROOT . '/path/file'
+     * instead.
+     *
+     * @param $type
+     *   The include file's type (file extension).
+     * @param $module
+     *   The module to which the include file belongs.
+     * @param $name
+     *   (optional) The base file name (without the $type extension). If omitted,
+     *   $module is used; i.e., resulting in "$module.$type" by default.
+     *
+     * @return
+     *   The name of the included file, if successful; FALSE otherwise.
+     */
+    public function module_load_include($type, $module, $name = null)
+    {
+        return module_load_include($type, $module, $name);
     }
 }
