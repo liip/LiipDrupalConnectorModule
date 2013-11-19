@@ -319,6 +319,26 @@ class Common
     }
 
     /**
+     * Prepares a 'destination' URL query parameter for use with drupal_goto().
+     *
+     * Used to direct the user back to the referring page after completing a form.
+     * By default the current URL is returned. If a destination exists in the
+     * previous request, that destination is returned. As such, a destination can
+     * persist across multiple pages.
+     *
+     * @return
+     *   An associative array containing the key:
+     *   - destination: The path provided via the destination query string or, if
+     *     not available, the current path.
+     *
+     * @see current_path()
+     * @see drupal_goto()
+     */
+    public function drupal_get_destination() {
+        return drupal_get_destination();
+    }
+
+    /**
      * Returns the path to a system item (module, theme, etc.).
      *
      * @param $type
@@ -636,6 +656,38 @@ class Common
     public function drupal_set_breadcrumb($breadcrumb = null)
     {
         drupal_set_breadcrumb($breadcrumb);
+    }
+
+    /**
+     * Saves (inserts or updates) a record to the database based upon the schema.
+     *
+     * Do not use drupal_write_record() within hook_update_N() functions, since the
+     * database schema cannot be relied upon when a user is running a series of
+     * updates. Instead, use db_insert() or db_update() to save the record.
+     *
+     * @param $table
+     *   The name of the table; this must be defined by a hook_schema()
+     *   implementation.
+     * @param $record
+     *   An object or array representing the record to write, passed in by
+     *   reference. If inserting a new record, values not provided in $record will
+     *   be populated in $record and in the database with the default values from
+     *   the schema, as well as a single serial (auto-increment) field (if present).
+     *   If updating an existing record, only provided values are updated in the
+     *   database, and $record is not modified.
+     * @param $primary_keys
+     *   To indicate that this is a new record to be inserted, omit this argument.
+     *   If this is an update, this argument specifies the primary keys' field
+     *   names. If there is only 1 field in the key, you may pass in a string; if
+     *   there are multiple fields in the key, pass in an array.
+     *
+     * @return
+     *   If the record insert or update failed, returns FALSE. If it succeeded,
+     *   returns SAVED_NEW or SAVED_UPDATED, depending on the operation performed.
+     */
+    public function drupal_write_record($table, &$record, $primary_keys = array())
+    {
+        return drupal_write_record($table, $record, $primary_keys);
     }
 
     /**
