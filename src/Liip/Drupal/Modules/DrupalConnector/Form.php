@@ -167,13 +167,26 @@ class Form
 
     /**
      * Returns the error message filed against the given form element.
-     *
      * Form errors higher up in the form structure override deeper errors as well as
      * errors on the element itself.
      *
+     * @param array $element
+     *
      * @return string
      */
-    function form_get_error($element) {
+    function form_get_error(array $element) {
         return form_get_error($element);
+    }
+
+    /**
+     * Changes submitted form values during form validation.
+     *
+     * @param array $element
+     * @param mixed $value
+     * @param array $form_atate
+     */
+    function form_set_value(array $element, $value, array &$form_atate)
+    {
+        form_set_value($element, $value, $form_atate);
     }
 }
