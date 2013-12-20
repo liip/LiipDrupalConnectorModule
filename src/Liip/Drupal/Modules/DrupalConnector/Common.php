@@ -904,7 +904,7 @@ class Common
      *
      * @link http://api.drupal.org/api/drupal/includes!bootstrap.inc/function/variable_get/7
      */
-    public function variable_get($name, $default)
+    public function variable_get($name, $default = NULL)
     {
         return variable_get($name, $default);
     }
