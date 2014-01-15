@@ -173,7 +173,30 @@ class Form
      *
      * @return string
      */
-    function form_get_error($element) {
+    public function form_get_error(array $element) {
         return form_get_error($element);
+    }
+
+    /**
+     * Changes submitted form values during form validation.
+     *
+     * @param array $element
+     * @param mixed $value
+     * @param array $form_atate
+     */
+    public function form_set_value(array $element, $value, array &$form_atate)
+    {
+        form_set_value($element, $value, $form_atate);
+    }
+
+    /**
+     * Flags an element as having an error.
+     *
+     * @param array $element
+     * @param string $message
+     */
+    public function form_error(array &$element, $message = '')
+    {
+        form_error($element, $message);
     }
 }
