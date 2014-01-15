@@ -117,7 +117,9 @@ class Node
         } catch (\Exception $e) {
             throw new NodeException(
                 sprintf(NodeException::FailedToSaveNodeText, $node->nid),
-                NodeException::FailedToSaveNode
+                NodeException::FailedToSaveNode,
+                $e->getCode(),
+                $e
             );
         }
     }
@@ -232,5 +234,34 @@ class Node
      */
     function node_submit($node) {
         return node_submit($node);
+    }
+
+    /**
+     * Loads node entities from the database.
+     *
+     * This function should be used whenever you need to load more than one node
+     * from the database. Nodes are loaded into memory and will not require database
+     * access if loaded again during the same page request.
+     *
+     * @see entity_load()
+     * @see EntityFieldQuery
+     *
+     * @param array $nids
+     *   An array of node IDs.
+     * @param array $conditions
+     *   (deprecated) An associative array of conditions on the {node}
+     *   table, where the keys are the database fields and the values are the
+     *   values those fields must have. Instead, it is preferable to use
+     *   EntityFieldQuery to retrieve a list of entity IDs loadable by
+     *   this function.
+     * @param boolean $reset
+     *   Whether to reset the internal node_load cache.
+     *
+     * @return array
+     *   An array of node objects indexed by nid.
+     */
+    public function node_load_multiple(array $nids, array $conditions = array(), $reset = false)
+    {
+        return node_load_multiple($nids, $conditions, $reset);
     }
 }
