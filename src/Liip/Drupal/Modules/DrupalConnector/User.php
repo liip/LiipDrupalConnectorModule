@@ -1,11 +1,9 @@
 <?php
 /**
  * Abstraction of the procedural Drupal world into OOP.
- *
  * @author     Bastian Feder <drupal@bastian-feder.de>
  * @license    http://www.opensource.org/licenses/mit-license.php The MIT License
  * @copyright  Copyright (c) 2012 liip ag
- *
  * @package    DrupalConnector
  * @subpackage User
  */
@@ -14,7 +12,6 @@ namespace Liip\Drupal\Modules\DrupalConnector;
 
 /**
  * Cumulates the user functions of Drupal 7 in one class.
- *
  * Please order the functions alphabetically!
  */
 class User
@@ -22,8 +19,8 @@ class User
     /**
      * Determine whether the user has a given privilege.
      *
-     * @param string $string  The permission, such as "administer nodes", being checked for
-     * @param null   $account [Optional] The account to check, if not given use currently logged in user.
+     * @param string $string The permission, such as "administer nodes", being checked for
+     * @param null $account [Optional] The account to check, if not given use currently logged in user.
      *
      * @return bool  »true« if the current user has the requested permission.
      */
@@ -35,7 +32,7 @@ class User
     /**
      * Try to validate the user's login credentials locally.
      *
-     * @param string $name     Username to be used.
+     * @param string $name Username to be used.
      * @param string $password Password to be used for authentication.
      *
      * @return integer|false The unique identifier of the user, else »false«.
@@ -48,8 +45,8 @@ class User
     /**
      * Determines, if there is a difference between the given user and the set of roles provided.
      *
-     * @param \stdClass $user  The user itś roles to be checked.
-     * @param array     $roles The set of roles to be verified against.
+     * @param \stdClass $user The user itś roles to be checked.
+     * @param array $roles The set of roles to be verified against.
      *
      * @return array Set of differences
      */
@@ -70,7 +67,6 @@ class User
 
     /**
      * Determines, if the user is already logged in.
-     *
      * @return boolean »true«, if the user has already been authenticated, else »false«
      */
     public function user_is_logged_in()
@@ -81,7 +77,7 @@ class User
     /**
      * Loads a user object.
      *
-     * @param integer $uid   Numeric identifier of the user to be loaded.
+     * @param integer $uid Numeric identifier of the user to be loaded.
      * @param boolean $reset If »true«, an internal cache will be purged before the user is loaded.
      *
      * @return \stdClass|false The fully loaded user, else false.
@@ -99,7 +95,6 @@ class User
      * @return \srdClass|FALSE
      *   A fully-loaded $user object upon successful user load or FALSE if user
      *   cannot be loaded.
-     *
      * @see user_load_multiple()
      */
     function user_load_by_mail($mail)
@@ -120,10 +115,28 @@ class User
     }
 
     /**
+     * Retrieve an array of roles matching specified conditions.
+     *
+     * @param boolean $membersonly
+     *   Set this to TRUE to exclude the 'anonymous' role.
+     * @param string $permission
+     *   A string containing a permission. If set, only roles containing that
+     *   permission are returned.
+     *
+     * @return array
+     *   An associative array with the role id as the key and the role name as
+     *   value.
+     */
+    public function user_roles($membersonly = false, $permission = null)
+    {
+        return user_roles($membersonly, $permission);
+    }
+
+    /**
      * Grant permissions to a user role.
      *
-     * @param string $rid         Identifier of a user role to alter.
-     * @param array  $permissions Set user_role_grant_permissions
+     * @param string $rid Identifier of a user role to alter.
+     * @param array $permissions Set user_role_grant_permissions
      */
     public function user_role_grant_permissions($rid, array $permissions = array())
     {
@@ -141,6 +154,53 @@ class User
     }
 
     /**
+     * Fetches a user role by role name.
+     *
+     * @param string $roleName
+     *   A string representing the role name.
+     *
+     * @return \stdClass|false
+     *   A fully-loaded role object if a role with the given name exists, or FALSE
+     *   otherwise.
+     * @see user_role_load()
+     */
+    public function user_role_load_by_name($roleName)
+    {
+        return user_role_load_by_name($roleName);
+    }
+
+    /**
+     * Determine the permissions for one or more roles.
+     *
+     * @param array $roles
+     *   An array whose keys are the role IDs of interest, such as $user->roles.
+     *
+     * @return array
+     *   An array indexed by role ID. Each value is an array whose keys are the
+     *   permission strings for the given role ID.
+     */
+    public function user_role_permissions(array $roles = array())
+    {
+        return user_role_permissions($roles);
+    }
+
+    /**
+     * Revoke permissions from a user role.
+     *
+     * @param integer $rid
+     *   The ID of a user role to alter.
+     * @param array $permissions
+     *   A list of permission names to revoke.
+     *
+     * @see user_role_change_permissions()
+     * @see user_role_grant_permissions()
+     */
+    public function user_role_revoke_permissions($rid, array $permissions = array())
+    {
+        user_role_revoke_permissions($rid, $permissions);
+    }
+
+    /**
      * Save a user role to the database.
      *
      * @param \stdClass $role A role object to modify or add.
@@ -155,12 +215,11 @@ class User
     /**
      * Persists the given account to the storage container.
      *
-     * @param \stdClass $account  The user to be stored.
-     * @param array     $array    An array of fields and values to save
-     * @param string    $category [Optional] The category for storing profile information in.
+     * @param \stdClass $account The user to be stored.
+     * @param array $array An array of fields and values to save
+     * @param string $category [Optional] The category for storing profile information in.
      *
      * @return \stdClass|false  A fully-loaded $user object upon successful save or FALSE if the save failed.
-     *
      * @throws \Exception in case of an error
      */
     public function user_save(\stdClass $account, array $array = array(), $category = 'account')
@@ -179,5 +238,4 @@ class User
 
         return $user;
     }
-
 }
