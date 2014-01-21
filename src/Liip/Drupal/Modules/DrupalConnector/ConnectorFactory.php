@@ -23,8 +23,13 @@ use Liip\Drupal\Modules\DrupalConnector\Node\Revision;
 class ConnectorFactory
 {
     /**
-    * @var Bootstrap
-    */
+     * @var Ajax
+     */
+    protected static $ajaxConnector;
+
+    /**
+     * @var Bootstrap
+     */
     protected static $bootstrapConnector;
 
     /**
@@ -91,6 +96,21 @@ class ConnectorFactory
      * @var User
      */
     protected static $userConnector;
+
+    /**
+     * Provides an instance of the Ajax object
+     *
+     * @static
+     * @return File
+     */
+    public static function getAjaxConnector()
+    {
+        if (is_null(self::$ajaxConnector)) {
+            self::$ajaxConnector = new Ajax();
+        }
+
+        return self::$ajaxConnector;
+    }
 
     /**
      * Provides an instance of the Cache object
