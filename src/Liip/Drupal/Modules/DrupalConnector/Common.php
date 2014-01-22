@@ -1020,4 +1020,21 @@ class Common
 
         return $language;
     }
+
+    /**
+     * Generates a string representation for the given byte count.
+     *
+     * @param $size
+     *   A size in bytes.
+     * @param $langcode
+     *   Optional language code to translate to a language other than what is used
+     *   to display the page.
+     *
+     * @return
+     *   A translated string representation of the size.
+     */
+    public function format_size($size, $langcode = NULL)
+    {
+        return format_size($size, $langcode)
+    }
 }
