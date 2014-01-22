@@ -1035,6 +1035,6 @@ class Common
      */
     public function format_size($size, $langcode = NULL)
     {
-        return format_size($size, $langcode)
+        return format_size($size, $langcode);
     }
 }
