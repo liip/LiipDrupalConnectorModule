@@ -302,6 +302,32 @@ class Common
     }
 
     /**
+     * Adds multiple JavaScript or CSS files at the same time.
+     *
+     * A library defines a set of JavaScript and/or CSS files, optionally using
+     * settings, and optionally requiring another library. For example, a library
+     * can be a jQuery plugin, a JavaScript framework, or a CSS framework. This
+     * function allows modules to load a library defined/shipped by itself or a
+     * depending module, without having to add all files of the library separately.
+     * Each library is only loaded once.
+     *
+     * @param null $data
+     * @param null $options
+     * @internal param $module The name of the module that registered the library.*   The name of the module that registered the library.
+     * @internal param $name The name of the library to add.*   The name of the library to add.
+     * @internal param $every_page Set to TRUE if this library is added to every page on the site. Only items*   Set to TRUE if this library is added to every page on the site. Only items
+     *   with the every_page flag set to TRUE can participate in aggregation.
+     *
+     * @return mixed TRUE if the library was successfully added; FALSE if the library or one of@see drupal_get_library()
+     * @see hook_library()
+     * @see hook_library_alter()
+     */
+    public function drupal_add_library($module = null, $name = null, $every_page = null)
+    {
+        return drupal_add_library($module, $name, $every_page);
+    }
+    
+    /**
      * Performs end-of-request tasks.
      *
      * In some cases page requests need to end without calling drupal_page_footer().
