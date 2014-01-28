@@ -326,7 +326,7 @@ class Common
     {
         return drupal_add_library($module, $name, $every_page);
     }
-    
+
     /**
      * Performs end-of-request tasks.
      *
@@ -1062,5 +1062,36 @@ class Common
     public function format_size($size, $langcode = NULL)
     {
         return format_size($size, $langcode);
+    }
+
+    /**
+     * Filters HTML to prevent cross-site-scripting (XSS) vulnerabilities.
+     *
+     * Based on kses by Ulf Harnhammar, see http://sourceforge.net/projects/kses.
+     * For examples of various XSS attacks, see: http://ha.ckers.org/xss.html.
+     *
+     * This code does four things:
+     * - Removes characters and constructs that can trick browsers.
+     * - Makes sure all HTML entities are well-formed.
+     * - Makes sure all HTML tags and attributes are well-formed.
+     * - Makes sure no HTML tags contain URLs with a disallowed protocol (e.g.
+     *   javascript:).
+     *
+     * @param $string
+     *   The string with raw HTML in it. It will be stripped of everything that can
+     *   cause an XSS attack.
+     * @param $allowed_tags
+     *   An array of allowed tags.
+     *
+     * @return
+     *   An XSS safe version of $string, or an empty string if $string is not
+     *   valid UTF-8.
+     *
+     * @see drupal_validate_utf8()
+     * @ingroup sanitization
+     */
+    public function filter_xss($string = null, $allowed_tags = null)
+    {
+        return filter_xss($string, $allowed_tags);
     }
 }
