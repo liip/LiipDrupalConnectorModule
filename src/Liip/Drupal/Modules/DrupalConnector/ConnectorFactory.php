@@ -83,6 +83,11 @@ class ConnectorFactory
     protected static $pathConnector;
 
     /**
+     * @var Session
+     */
+    protected static $sessionConnector;
+
+    /**
      * @var Revision
      */
     protected static $nodeRevisionConnector;
@@ -305,6 +310,21 @@ class ConnectorFactory
         }
 
         return self::$pathConnector;
+    }
+
+    /**
+     * Provides an instance of the Session object
+     *
+     * @static
+     * @return Session
+     */
+    public static function getSessionConnector()
+    {
+        if (is_null(self::$sessionConnector)) {
+            self::$sessionConnector = new Session();
+        }
+
+        return self::$sessionConnector;
     }
 
     /**
