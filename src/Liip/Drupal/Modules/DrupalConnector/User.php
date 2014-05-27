@@ -238,4 +238,14 @@ class User
 
         return $user;
     }
+    
+    /**
+     * Override the global user.
+     */
+    public function set_current_user($new_user)
+    {
+        global $user;
+        
+        $user = $new_user;
+    }
 }
