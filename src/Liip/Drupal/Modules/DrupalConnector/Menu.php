@@ -355,7 +355,39 @@ class Menu
         return menu_build_tree($menu_name, $parameters);
     }
 
-    /**
+  /**
+   * Build a menu tree without access check
+   *
+   * @param $menu_name
+   *   The name of the menu.
+   * @param $parameters
+   *   (optional) An associative array of build parameters. Possible keys:
+   *   - expanded: An array of parent link ids to return only menu links that are
+   *     children of one of the plids in this list. If empty, the whole menu tree
+   *     is built, unless 'only_active_trail' is TRUE.
+   *   - active_trail: An array of mlids, representing the coordinates of the
+   *     currently active menu link.
+   *   - only_active_trail: Whether to only return links that are in the active
+   *     trail. This option is ignored, if 'expanded' is non-empty. Internally
+   *     used for breadcrumbs.
+   *   - min_depth: The minimum depth of menu links in the resulting tree.
+   *     Defaults to 1, which is the default to build a whole tree for a menu, i.e.
+   *     excluding menu container itself.
+   *   - max_depth: The maximum depth of menu links in the resulting tree.
+   *   - conditions: An associative array of custom database select query
+   *     condition key/value pairs; see _menu_build_tree() for the actual query.
+   *
+   * @return
+   *   A fully built menu tree.
+   */
+    function menu_build_tree_without_access_check($menu_name, array $parameters = array()) {
+      // Build the menu tree without access check and ignore disabled nodes
+      $data = _menu_build_tree($menu_name, $parameters);
+      return $data['tree'];
+    }
+
+
+  /**
      * Recursive helper function - collect node links.
      *
      * @param $tree
