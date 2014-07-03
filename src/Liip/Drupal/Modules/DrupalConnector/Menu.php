@@ -164,7 +164,7 @@ class Menu
      */
     public function menu_tail_load($arg, &$map, $index)
     {
-        return menu_tail_load($arg, &$map, $index);
+        return menu_tail_load($arg, $map, $index);
     }
 
     /**
