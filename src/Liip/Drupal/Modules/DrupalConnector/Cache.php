@@ -29,7 +29,7 @@ class Cache
      */
     public function cache_get($key, $bin = 'cache')
     {
-        return cache_get($key, $table);
+        return cache_get($key, $bin);
     }
 
     /**
