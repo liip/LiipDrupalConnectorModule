@@ -162,7 +162,7 @@ class Ajax
      */
     public function ajax_process_form($element, &$form_state)
     {
-        return ajax_process_form($element, &$form_state);
+        return ajax_process_form($element, $form_state);
     }
 
     /**
