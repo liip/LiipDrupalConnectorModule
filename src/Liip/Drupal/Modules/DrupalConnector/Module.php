@@ -31,16 +31,14 @@ class Module
      * reference in the last $context argument:
      *
      * <code>
-     *   []
-     *
+     * ...
      *   $context = array(
      *     'alterable' => &$alterable,
      *     'unalterable' => $unalterable,
      *     'foo' => 'bar',
      *   );
      *   drupal_alter('mymodule_data', $alterable1, $alterable2, $context);
-     *
-     *   []
+     * ...
      * </code>
      *
      * Note that objects are always passed by reference in PHP5. If it is absolutely
@@ -48,14 +46,12 @@ class Module
      * object needs to be cloned:
      *
      * <code>
-     *  []
-     *
+     * ...
      *   $context = array(
      *     'unalterable_object' => clone $object,
      *   );
      *   drupal_alter('mymodule_data', $data, $context);
-     *
-     *  []
+     * ...
      * </code>
      *
      * @param string $type      A string describing the type of the alterable $data. 'form', 'links',
@@ -173,11 +169,11 @@ class Module
      *
      * Example:
      * <code>
-     *  []
+     * ...
      *
      *  $block = module_invoke('views', 'block_view', 'map-block_1');
      *
-     *  []
+     * ...
      * </code>
      *
      * @param string $module   The name of the module (without the .module extension).
@@ -201,11 +197,9 @@ class Module
      *
      * Example:
      * <code>
-     *  []
-     *
+     * ...
      *  $blocks = module_invoke_all('block_view', 'map-block_1');
-     *
-     *  []
+     * ...
      * </code>
      *
      * @param string $hook The name of the hook to invoke.
